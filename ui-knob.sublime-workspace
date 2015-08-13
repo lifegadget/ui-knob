@@ -1,0 +1,1382 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"curr",
+				"currentPath"
+			],
+			[
+				"works",
+				"workoutSessionType"
+			],
+			[
+				"DATE",
+				"DATETIME_FORMAT"
+			],
+			[
+				"depen",
+				"dependencies"
+			],
+			[
+				"sub",
+				"subHeadingRight"
+			],
+			[
+				"two",
+				"twoDaysFromNow"
+			],
+			[
+				"client",
+				"clientId"
+			],
+			[
+				"qu",
+				"queryParams"
+			],
+			[
+				"new",
+				"newSession	(sessions.hbs)"
+			],
+			[
+				"verti",
+				"vertical-align"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"media",
+				"@media	@media ${1:screen} {\n	${0}\n}"
+			],
+			[
+				"min",
+				"min	min()"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"current",
+				"currentId"
+			],
+			[
+				"pt",
+				"padding-top"
+			],
+			[
+				"pb",
+				"padding-bottom"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"Marked",
+				"Marked 2.app"
+			],
+			[
+				"tran",
+				"transitionToRoute"
+			],
+			[
+				"tra",
+				"transitionToRoute"
+			],
+			[
+				"cen",
+				"center"
+			],
+			[
+				"siz",
+				"font-size"
+			],
+			[
+				"br",
+				"border-radius"
+			],
+			[
+				"list",
+				"list-n	list-style-type: none;"
+			],
+			[
+				"filter",
+				"filteredClients"
+			],
+			[
+				"clien",
+				"clientId"
+			],
+			[
+				"curren",
+				"currentClientId"
+			],
+			[
+				"Action",
+				"actionHandler"
+			],
+			[
+				"paneA",
+				"paneAction"
+			],
+			[
+				"f",
+				"folders"
+			],
+			[
+				"class",
+				"classNameBindings"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/JSHint/JSHint.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/JSHint/JSHint.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"last_filter": "colo",
+		"selected_items":
+		[
+			[
+				"colo",
+				"Color Picker"
+			],
+			[
+				"quote",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"color",
+				"Color Picker"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"statu",
+				"Git: Status"
+			],
+			[
+				"javane",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"sour",
+				"SourceTree: Open SourceTree"
+			],
+			[
+				"feature",
+				"Git-flow: Feature Start"
+			],
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"quo",
+				"BracketHighlighter: Swap Quotes"
+			],
+			[
+				"org",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"ordes",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"or",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"orcre",
+				"Origami: Create Pane Below"
+			],
+			[
+				"o",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"hand",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"des",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"vari",
+				"List stylesheet variables"
+			],
+			[
+				"todo",
+				"TodoReview: Open Files"
+			],
+			[
+				"orgright",
+				"Origami: Create Pane with File on the Right"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"javanext",
+				"Set Syntax: JavaScript Next"
+			],
+			[
+				"var",
+				"List stylesheet variables"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"dest",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"orgbelo",
+				"Origami: Create Pane with File Below"
+			],
+			[
+				"orgdes",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"orabel",
+				"Origami: Create and Focus Pane Below"
+			],
+			[
+				"emmwrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"toggle",
+				"BracketHighlighter: Toggle High Visibility Mode"
+			],
+			[
+				"bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"key",
+				"Keymaps: Cheat Sheet"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			],
+			[
+				"variab",
+				"List stylesheet variables"
+			],
+			[
+				"jshin",
+				"JSHint: Set Plugin Options"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"high",
+				"BracketHighlighter: Select Bracket Content with Brackets"
+			],
+			[
+				"destory",
+				"Origami: Destroy Current Pane"
+			],
+			[
+				"focus righ",
+				"Origami: Focus on Pane on the Right"
+			],
+			[
+				"orgam",
+				"Origami: Destroy Pane Below"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"align",
+				"Preferences: Alignment File Settings – User"
+			],
+			[
+				"source",
+				"SourceTree: Open SourceTree"
+			],
+			[
+				"marked",
+				"Marked"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git qa",
+				"Git: Quick Add"
+			],
+			[
+				"git com",
+				"Git: Quick Commit"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"packlist",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pack ",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack list",
+				"Package Control: Remove Repository"
+			],
+			[
+				"build",
+				"Build: Cancel"
+			],
+			[
+				"git sta",
+				"Git: Status"
+			],
+			[
+				"packinstal",
+				"Package Control: Install Package"
+			],
+			[
+				"gitlic",
+				"SublimeGit: Add License"
+			],
+			[
+				"gitstat",
+				"Git: Status"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"jav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"Package Control: In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: pat",
+				"Package Control: Add Repository"
+			]
+		],
+		"width": 233.0
+	},
+	"console":
+	{
+		"height": 358.0,
+		"history":
+		[
+			"install EditorConfig",
+			"install package ",
+			"ls",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"install ",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Volumes/PEGASUS/repos/mine/ui-knob"
+	],
+	"file_history":
+	[
+		"/Volumes/PEGASUS/repos/mine/trainer/package.json",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/styles/app.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/clients/client.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/application.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/client.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/services/navigator.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/styles/session-list.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/config.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/settings/workouts.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/settings.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/user-template.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/components/schedule-for-day.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/settings.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/adapters/application.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/clients/client/sessions.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/sessions.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/app-template.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/workouts.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/workout-template.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/standard-header.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/components/standard-header.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/users.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/scheduled.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/new.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/session-listing.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/services/sessions.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/components/session-listing.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/new.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/session/scheduled.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/services/trainer.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/new-workout-type.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/sessions/session/scheduled.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mixins/dictionary-manager.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/schedule-for-day.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/clients/client/sessions.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/clients/client/sessions.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/styles/schedule-for-day.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/activities.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/activity.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/sessions/new.js",
+		"/Users/Ken/.bash_profile",
+		"/Users/Ken/.zshrc",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/services/clients.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/clients/new.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/comment.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/comments.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/node_modules/liquid-fire/index.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/bower.json",
+		"/usr/bin/stkLaunchAgent.sh",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/workouts/workout.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/.watchmanconfig",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/styles/sessions.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/user.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/uoms.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/index.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/relationships.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/markers.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/.jshintrc",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/index.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/actions.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/fixtures/goals.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/server/index.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/scenarios/.gitkeep",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/mirage/factories/.gitkeep",
+		"/Volumes/PEGASUS/repos/mine/trainer/server/mocks/activities.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/clients/index.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/clients/client.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/services/relationships.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/session/rebook.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/sessions/rebook.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/rebook.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/schedule/day.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/styles/avatar-icon.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/workouts/new.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/activity-detailer.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/index.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/components/avatar-icon.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/avatar-icon.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/cancelled.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/bower_components/jasny-bootstrap/scss/jasny-bootstrap.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/session/rebooked.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/start.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/session/start.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/rebooked.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/tests/unit/controllers/sessions/session/scheduled-test.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/tests/unit/models/schedule-test.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/tests/unit/routes/sessions/session/start-test.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions.session.start.hbs",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Volumes/PEGASUS/repos/mine/trainer/docs/assets/trainer-sitemap.graffle",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/Side Bar.sublime-settings",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/Volumes/PEGASUS/repos/mine/trainer/docs/assets/The Team - March 2015.png",
+		"/Volumes/PEGASUS/repos/mine/trainer/docs/images/health-measurements.png",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements/Side Bar.sublime-settings",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/rebook.hbs",
+		"/Users/Ken/.gitconfig",
+		"/Users/Ken/.bashrc",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/master-detail-item.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/objects/AjaxPromise.js",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/JavaScriptNext.sublime-settings",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/session/cancelled.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/activities/activity.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/components/x-knob.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/styles/flexy.scss",
+		"/Volumes/PEGASUS/repos/mine/trainer/README.md",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/router.js",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/Emmet.sublime-settings",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/goal.js",
+		"/Users/Ken/Library/Application Support/Sublime Text 3/Packages/User/Pretty JSON.sublime-settings",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/controllers/sessions/session.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/components/activity-summary.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/sessions/session/rebooked.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/models/relationship.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/session/completed.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/services/client.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/workouts/workout.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/sessions/cancel.hbs",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/routes/sessions/session.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/server/mocks/users.js",
+		"/Volumes/PEGASUS/repos/mine/trainer/docs/sitemap.md",
+		"/Volumes/PEGASUS/repos/mine/trainer/app/templates/clients/client.hbs"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"*.js",
+			"",
+			"*.scss",
+			"*.css",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"{{x-knob",
+			"knob",
+			"notifyP",
+			"xs-col",
+			".create(",
+			".sort",
+			"ui-list",
+			"My Workouts",
+			"currentPath",
+			"viewPort",
+			"template",
+			"hasMany",
+			"name:",
+			"mobile-",
+			"phone",
+			"not-phone",
+			"notphone",
+			"registering",
+			"Adding diction",
+			"workout_session_type",
+			"{{c",
+			"all",
+			"store.find",
+			"DATE_FORMAT",
+			"save(",
+			"phone",
+			"nophone",
+			"notphone",
+			"startTime",
+			"owned by",
+			"id: '([0-9]+)'",
+			"},",
+			"{ id",
+			"{ id:",
+			", ",
+			"\"",
+			"return this.store.find",
+			"deleteRecord",
+			"createRecord",
+			"clients: inject",
+			"addSession",
+			"model: fun",
+			"ember-moment",
+			"user-scalable",
+			"for(",
+			"clone",
+			"#each",
+			"inject",
+			"ui-select",
+			"#each",
+			"sub-head",
+			"sub-session",
+			"checkbox",
+			"hidden",
+			"hide",
+			"skip",
+			"decoration",
+			"transit",
+			"animate",
+			".downer",
+			"h4",
+			"52698",
+			"{{ui-selectize value=action handle=\"movable\" change=\"chooseMaster\" placeholder=placeholder options=options labelField=labelField valueField=valueField}}\n52698",
+			"options:",
+			"options=",
+			"ui-selectize",
+			".section",
+			".section-heading",
+			"right ",
+			"right",
+			"right {",
+			"AjaxPromise",
+			"attributeBinding",
+			"Binding",
+			"-skip",
+			"-hide",
+			"hide-",
+			"skip",
+			"flexy",
+			"workflow",
+			"cp",
+			"clients",
+			"filtered",
+			"    ",
+			"all",
+			"start",
+			"set:",
+			"store.find",
+			"inject",
+			"store",
+			"findAll",
+			"CTRL V",
+			"ALT SHIFT F",
+			"ALT SHIFT ",
+			"ALT SHIFT A",
+			"sessionsacti",
+			"sessions",
+			"resource",
+			"re",
+			"transitionTo.*workout",
+			"transitionTo.*activity",
+			"transitionTo",
+			"sendAction",
+			"import",
+			"const",
+			"');\n",
+			"subHeadingExists",
+			"actionHandler",
+			".set",
+			"_tellGroup",
+			"indexOf"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"col-xs",
+			"id: $1",
+			"{\\nid",
+			"{\\nid:",
+			",\\n",
+			"'",
+			"route"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-commit":
+	{
+		"height": 143.0
+	},
+	"output.git-flow-feature-start":
+	{
+		"height": 114.0
+	},
+	"output.git-push":
+	{
+		"height": 110.0
+	},
+	"pinned_build_system": "",
+	"project": "ui-knob.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"knob",
+				"app/components/x-knob.js"
+			],
+			[
+				"pac",
+				"package.json"
+			],
+			[
+				"bo",
+				"bower.json"
+			],
+			[
+				"app",
+				"app/styles/app.scss"
+			],
+			[
+				"tese",
+				"tests/unit/models/setting-test.js"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"fix",
+				"app/mirage/fixtures/userTemplates.js"
+			],
+			[
+				"modeluserte",
+				"app/models/user-template.js"
+			],
+			[
+				"confi",
+				"app/mirage/config.js"
+			],
+			[
+				"settworkjs",
+				"app/controllers/settings/workouts.js"
+			],
+			[
+				"user-tem",
+				"app/models/user-template.js"
+			],
+			[
+				"config.js",
+				"app/mirage/config.js"
+			],
+			[
+				"routeworkout",
+				"app/routes/settings/workouts.js"
+			],
+			[
+				"settingswork",
+				"app/templates/settings/workouts.hbs"
+			],
+			[
+				"nav",
+				"app/services/navigator.js"
+			],
+			[
+				"navi",
+				"app/services/navigator.js"
+			],
+			[
+				"appli",
+				"app/controllers/application.js"
+			],
+			[
+				"applica",
+				"app/adapters/application.js"
+			],
+			[
+				"client.js",
+				"app/controllers/clients/client.js"
+			],
+			[
+				"clientsessions",
+				"app/controllers/clients/client/sessions.js"
+			],
+			[
+				"cliensession",
+				"app/routes/clients/client/sessions.js"
+			],
+			[
+				"sessions",
+				"app/routes/sessions.js"
+			],
+			[
+				"fixuser",
+				"app/mirage/fixtures/users.js"
+			],
+			[
+				"contsettin",
+				"app/controllers/settings.js"
+			],
+			[
+				"setthbs",
+				"app/templates/settings.hbs"
+			],
+			[
+				"standa",
+				"app/components/standard-header.js"
+			],
+			[
+				"stand",
+				"app/templates/components/standard-header.hbs"
+			],
+			[
+				"standar",
+				"app/templates/components/standard-header.hbs"
+			],
+			[
+				"schedulhbs",
+				"app/templates/sessions/session/scheduled.hbs"
+			],
+			[
+				"routesched",
+				"app/routes/sessions/session/scheduled.js"
+			],
+			[
+				"scheduld",
+				"app/controllers/sessions/session/scheduled.js"
+			],
+			[
+				"trainer",
+				"app/services/trainer.js"
+			],
+			[
+				"newjs",
+				"app/controllers/sessions/new.js"
+			],
+			[
+				"newhbs",
+				"app/templates/sessions/new.hbs"
+			],
+			[
+				"scheday",
+				"app/components/schedule-for-day.js"
+			],
+			[
+				"sche",
+				"app/templates/components/schedule-for-day.hbs"
+			],
+			[
+				"cliensessjs",
+				"app/controllers/clients/client/sessions.js"
+			],
+			[
+				"sesslisthb",
+				"app/templates/components/session-listing.hbs"
+			],
+			[
+				"seslist",
+				"app/components/session-listing.js"
+			],
+			[
+				"servic",
+				"app/services/sessions.js"
+			],
+			[
+				"modelacti",
+				"app/models/activity.js"
+			],
+			[
+				"fixact",
+				"app/mirage/fixtures/activities.js"
+			],
+			[
+				"sessionshbs",
+				"app/templates/clients/client/sessions.hbs"
+			],
+			[
+				"schday",
+				"app/templates/components/schedule-for-day.hbs"
+			],
+			[
+				"schfo",
+				"app/components/schedule-for-day.js"
+			],
+			[
+				"model",
+				"app/models/activity.js"
+			],
+			[
+				"client",
+				"app/services/clients.js"
+			],
+			[
+				"fixtureac",
+				"app/mirage/fixtures/activities.js"
+			],
+			[
+				"routenew",
+				"app/routes/sessions/new.js"
+			],
+			[
+				"service",
+				"app/services/sessions.js"
+			],
+			[
+				"sessionhbs",
+				"app/templates/clients/client/sessions.hbs"
+			],
+			[
+				"ses",
+				"app/services/sessions.js"
+			],
+			[
+				"routesession",
+				"app/routes/clients/client/sessions.js"
+			],
+			[
+				"newwor",
+				"app/templates/components/new-workout-type.hbs"
+			],
+			[
+				"modelcom",
+				"app/models/comment.js"
+			],
+			[
+				"bower",
+				"bower.json"
+			],
+			[
+				"schefor",
+				"app/templates/components/schedule-for-day.hbs"
+			],
+			[
+				"watc",
+				".watchmanconfig"
+			],
+			[
+				"fixtu",
+				"app/mirage/fixtures/activities.js"
+			],
+			[
+				"appcs",
+				"app/styles/app.scss"
+			],
+			[
+				"schforda",
+				"app/templates/components/schedule-for-day.hbs"
+			],
+			[
+				"shcford",
+				"app/components/schedule-for-day.js"
+			],
+			[
+				"sessnewhbs",
+				"app/templates/sessions/new.hbs"
+			],
+			[
+				"sessnew",
+				"app/controllers/sessions/new.js"
+			],
+			[
+				"relation",
+				"app/mirage/fixtures/relationships.js"
+			],
+			[
+				"js",
+				".jshintrc"
+			],
+			[
+				"mirage",
+				"app/mirage/fixtures/activities.js"
+			],
+			[
+				"sessscss",
+				"app/styles/sessions.scss"
+			],
+			[
+				"sessions/ind",
+				"app/templates/sessions/index.hbs"
+			],
+			[
+				"sessions/index",
+				"app/templates/sessions/session/index.hbs"
+			],
+			[
+				"modelactivy",
+				"app/models/activity.js"
+			],
+			[
+				"scheduledhbs",
+				"app/templates/sessions/session/scheduled.hbs"
+			],
+			[
+				"server",
+				"server/mocks/activities.js"
+			],
+			[
+				"rebook",
+				"app/controllers/sessions/session/rebook.js"
+			],
+			[
+				"rebookhbs",
+				"app/templates/sessions/session/rebook.hbs"
+			],
+			[
+				"scheduled.hbs",
+				"app/templates/sessions/session/scheduled.hbs"
+			],
+			[
+				"rela",
+				"app/services/relationships.js"
+			],
+			[
+				"clients.js",
+				"app/services/clients.js"
+			],
+			[
+				"routeclientsclien",
+				"app/routes/clients/client.js"
+			],
+			[
+				"clientsclient",
+				"app/controllers/clients/client.js"
+			],
+			[
+				"clientshbs",
+				"app/templates/clients/index.hbs"
+			],
+			[
+				"clientsnew",
+				"app/routes/clients/new.js"
+			],
+			[
+				"new",
+				"app/controllers/sessions/new.js"
+			],
+			[
+				"routeclients/cline",
+				"app/routes/clients/client.js"
+			],
+			[
+				"scheduleday",
+				"app/routes/schedule/day.js"
+			],
+			[
+				"clientssessionjs",
+				"app/controllers/clients/client/sessions.js"
+			],
+			[
+				"routesessionnew",
+				"app/routes/sessions/new.js"
+			],
+			[
+				"hbs",
+				"app/templates/index.hbs"
+			],
+			[
+				"bow",
+				"bower.json"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"avajs",
+				"app/components/avatar-icon.js"
+			],
+			[
+				"ava",
+				"app/templates/components/avatar-icon.hbs"
+			],
+			[
+				"avat",
+				"app/templates/components/avatar-icon.hbs"
+			],
+			[
+				"cancelled",
+				"app/templates/sessions/session/cancelled.hbs"
+			],
+			[
+				"modeluser",
+				"app/models/user.js"
+			],
+			[
+				"sessionssched",
+				"app/controllers/sessions/session/scheduled.js"
+			],
+			[
+				"controlernew",
+				"app/controllers/sessions/new.js"
+			],
+			[
+				"sessionsnewh",
+				"app/templates/sessions/new.hbs"
+			],
+			[
+				"sessionsnew",
+				"app/routes/sessions/new.js"
+			],
+			[
+				"app.sc",
+				"app/styles/app.scss"
+			],
+			[
+				"scheduljs",
+				"tests/unit/models/schedule-test.js"
+			],
+			[
+				"start.js",
+				"app/controllers/clients/client/start.js"
+			],
+			[
+				"scheduledtst",
+				"tests/unit/controllers/sessions/session/scheduled-test.js"
+			],
+			[
+				"starttest",
+				"tests/unit/routes/sessions.session.start-test.js"
+			],
+			[
+				"start",
+				"app/templates/sessions.session.start.hbs"
+			],
+			[
+				"clientsessionshbs",
+				"app/templates/clients/client/sessions.hbs"
+			],
+			[
+				"rebookedjs",
+				"app/controllers/sessions/session/rebooked.js"
+			],
+			[
+				"rebookedhbs",
+				"app/templates/sessions/session/rebooked.hbs"
+			],
+			[
+				"rebookjs",
+				"app/controllers/sessions/session/rebook.js"
+			],
+			[
+				"rebo",
+				"app/templates/sessions/rebook.hbs"
+			],
+			[
+				"rebooedhbs",
+				"app/templates/sessions/session/rebooked.hbs"
+			],
+			[
+				"cancelhbs",
+				"app/templates/sessions/session/cancelled.hbs"
+			],
+			[
+				"apps.",
+				"app/styles/app.scss"
+			],
+			[
+				"scheduledjs",
+				"app/controllers/sessions/session/scheduled.js"
+			],
+			[
+				"cliensessionjs",
+				"app/controllers/clients/client/sessions.js"
+			],
+			[
+				"router",
+				"app/router.js"
+			],
+			[
+				"session",
+				"app/controllers/clients/client/sessions.js"
+			],
+			[
+				"ajaxp",
+				"app/objects/AjaxPromise.js"
+			],
+			[
+				"cancelljs",
+				"app/controllers/sessions/session/cancelled.js"
+			],
+			[
+				"modelac",
+				"app/models/activity.js"
+			],
+			[
+				"read",
+				"README.md"
+			],
+			[
+				"activitydetail",
+				"app/templates/components/activity-detailer.hbs"
+			],
+			[
+				"activityhbs",
+				"app/templates/activities/activity.hbs"
+			],
+			[
+				"modelgoa",
+				"app/models/goal.js"
+			],
+			[
+				"style",
+				"app/styles/app.scss"
+			],
+			[
+				"modelactiv",
+				"app/models/activity.js"
+			],
+			[
+				"rebooked",
+				"app/controllers/sessions/session/rebooked.js"
+			],
+			[
+				"components",
+				"app/templates/components/activity-summary.hbs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "icon",
+		"selected_items":
+		[
+			[
+				"icon",
+				"/Volumes/PEGASUS/repos/mine/ui-icon/ui-icon.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 27.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 955.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
