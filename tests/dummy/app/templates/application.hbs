@@ -21,6 +21,8 @@
         angleArc=angleArc
         cursor=cursor
         displayInput=displayInput
+        displayPrevious=displayPrevious
+        lineCap=lineCap
       }}
     </widget>
     <code>
@@ -37,6 +39,8 @@
         angleArc=angleArc
         cursor=cursor
         displayInput=displayInput
+        displayPrevious=displayPrevious
+        lineCap=lineCap
       }}
     </code>
     <description>
@@ -82,13 +86,30 @@
         </span>
       </control>
       <control>
-        <span class='name'>cursor mode:</span>
+        <span class='name'>stopper:</span>
         <span>
-          {{ui-toggle-button on='cursor' false='fill-in' value=cursor}}
+          {{ui-toggle-button on='true' false='false' value=stopper}}
         </span>
         <span class='name'>display input:</span>
         <span>
           {{ui-toggle-button on='show' false='hide' value=displayInput}}
+        </span>
+        <span class='name'>display previous:</span>
+        <span>
+          {{ui-toggle-button on='show' false='hide' value=displayPrevious}}
+        </span>
+      </control>
+      <control>
+        <span class='name'>line cap:</span>
+        <span>
+          {{radio-buttons value=lineCap buttons='butt,round'}}
+        </span>
+
+      </control>
+      <control>
+        <span class='name'>cursor</span>
+        <span>
+          {{radio-buttons buttons='off:::false,1,3,5,10,25' value=cursor}}
         </span>
       </control>
       </controls>

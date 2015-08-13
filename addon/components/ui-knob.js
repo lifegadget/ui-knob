@@ -51,7 +51,6 @@ export default Ember.Component.extend(Stylist,{
   font: 'Arial',
   fontWeight: 'normal',
   _configListener: observer(...apiSurface, function() {
-    console.log('config changed');
     this.configDidChange();
   }),
   getOptions() {
@@ -159,7 +158,6 @@ export default Ember.Component.extend(Stylist,{
       return this[item] !== _config[item];
     });
     const newConfig = this.getProperties(...changedConfig);
-    console.log('newConfig: %o', newConfig);
     Ember.run.schedule('afterRender', () => {
       this.$().trigger('configure', newConfig);
       this.benchmarkConfig();

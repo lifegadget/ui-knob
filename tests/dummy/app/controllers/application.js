@@ -10,5 +10,8 @@ export default Ember.Controller.extend({
   value: 25,
   angleOffset: 10,
   angleArc: 340,
-  displayInput: true
+  displayInput: true,
+  displayPrevious: true,
+  lineCap: 'butt',
+  cursor: false
 });
