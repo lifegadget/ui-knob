@@ -117,7 +117,6 @@ export default Ember.Component.extend(Stylist,{
   initiateKnob: on('didRender',function() {
     this.set('isInitialised', true);
     var options = this.buildOptions();
-    console.log(this.get('elementId'));
     this.$().knob(options);
     this.syncValue();
     this.benchmarkConfig();

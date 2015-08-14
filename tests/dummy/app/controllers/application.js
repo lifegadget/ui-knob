@@ -13,5 +13,7 @@ export default Ember.Controller.extend({
   displayInput: true,
   displayPrevious: true,
   lineCap: 'butt',
-  cursor: false
+  cursor: false,
+  bgColor: '#EFEEEE',
+  fgColor: '#66CC66'
 });

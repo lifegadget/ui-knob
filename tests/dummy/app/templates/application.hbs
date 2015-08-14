@@ -1,6 +1,6 @@
 {{#demo-css}}
 <div class="container">
-  <h1 id="title">ui-knob</h1>
+  <h1 id="title"><a href="https://github.com/lifegadget/ui-knob">ui-knob</a></h1>
   <h2>A touch friendly knob to use in your ember apps</h2>
 
   <h3>Background</h3>
@@ -20,9 +20,13 @@
         angleOffset=angleOffset
         angleArc=angleArc
         cursor=cursor
+        stopper=stopper
         displayInput=displayInput
         displayPrevious=displayPrevious
         lineCap=lineCap
+        readOnly=readOnly
+        fgColor=fgColor
+        bgColor=bgColor
       }}
     </widget>
     <code>
@@ -38,10 +42,14 @@
         angleOffset=angleOffset
         angleArc=angleArc
         cursor=cursor
+        stopper=stopper
         displayInput=displayInput
         displayPrevious=displayPrevious
         lineCap=lineCap
-      }}
+        readOnly=readOnly
+        fgColor=fgColor
+        bgColor=bgColor
+     }}
     </code>
     <description>
       Basic usage includes setting properties such as:
@@ -50,11 +58,11 @@
       <control>
         <span class='name'>min:</span>
         <span>
-          {{number-input value=min skin='flat' size='small' defaultValue=0}}
+          {{number-input value=min step=10 skin='flat' size='small' defaultValue=0}}
         </span>
         <span class='name'>max:</span>
         <span>
-          {{number-input value=max skin='flat' size='small' defaultValue=100}}
+          {{number-input value=max step=10 skin='flat' size='small' defaultValue=100}}
         </span>
         <span class='name'>step:</span>
         <span>
@@ -104,12 +112,25 @@
         <span>
           {{radio-buttons value=lineCap buttons='butt,round'}}
         </span>
-
+        <span class='name'>read only:</span>
+        <span>
+          {{ui-toggle-button on='true' false='false' value=readOnly}}
+        </span>
       </control>
       <control>
         <span class='name'>cursor</span>
         <span>
           {{radio-buttons buttons='off:::false,1,3,5,10,25' value=cursor}}
+        </span>
+      </control>
+      <control>
+        <span class='name'>fgColor:</span>
+        <span>
+          {{text-input value=fgColor skin='flat' size='small' defaultValue='#66CC66'}}
+        </span>
+        <span class='name'>bgColor:</span>
+        <span>
+          {{text-input value=bgColor skin='flat' size='small' defaultValue='#EFEEEE'}}
         </span>
       </control>
       </controls>

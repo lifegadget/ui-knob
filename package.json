@@ -1,6 +1,6 @@
 {
   "name": "ui-knob",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A visual knob slider for ambition Ember apps",
   "directories": {
     "doc": "doc",
@@ -43,7 +43,8 @@
     "ui-input": "^0.5.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ui"
   ],
   "dependencies": {
     "ember-cli-htmlbars": "0.7.9",
