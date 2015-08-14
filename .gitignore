@@ -16,4 +16,4 @@
 npm-debug.log
 testem.log
 /.divshot-cache/*
-ui-knob.sublime-workspace
+/ui-knob.sublime-workspace
