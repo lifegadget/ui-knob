@@ -13,9 +13,10 @@
     "loader.js": "ember-cli/loader.js#3.2.1",
     "qunit": "~1.18.0",
     "jquery-knob": "~1.2.11",
-    "babel-polyfill": "~0.0.1"
+    "bootstrap": "~3.3.5"
   },
   "devDependencies": {
+    "babel-polyfill": "~0.0.1",
     "bootstrap": "~3.3.5",
     "fontawesome": "~4.4.0",
     "animate.css": "~3.4.0"
