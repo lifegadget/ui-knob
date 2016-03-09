@@ -4,20 +4,22 @@
 ## Install ##
 
 - Modern CLI versions
-    ````bash
-    ember install ui-knob
-    ````
+
+  ````bash
+  ember install ui-knob
+  ````
 
 - Earlier CLI versions (and *addon developers*)
-    ````bash
-    npm install ui-knob --save-dev
-    ember g ui-knob
-    ````
+
+  ````bash
+  npm install ui-knob --save-dev
+  ember g ui-knob
+  ````
 
 ## Usage ##
 For more details on the syntax check out the interactive demo:
 
-> [ui-knob demo and examples](http://development.ui-knob.divshot.io)
+> [ui-knob demo and examples](https://ui-knob.firebaseapp.com/)
 
 ## Dependencies
 

@@ -14,5 +14,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{ui-knob}}`);
 
   assert.equal(this.$().text().trim(), '');
-
 });
