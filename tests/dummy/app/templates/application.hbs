@@ -134,7 +134,12 @@
         </span>
         <span class='name'>read only:</span>
         <span>
-          {{ui-toggle-button on='true' false='false' value=readOnly}}
+          {{ui-toggle-button
+            on='true'
+            false='false'
+            value=readOnly
+            onToggle=(mut readOnly)
+          }}
         </span>
       </control>
       <control>
