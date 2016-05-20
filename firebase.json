@@ -6,8 +6,22 @@
     "**/.*",
     "**/node_modules/**"
   ],
-  "rewrites": [{
-    "source": "**",
-    "destination": "/index.html"
-  }]
+  "rewrites": [
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }
+  ],
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "dist",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
 }
