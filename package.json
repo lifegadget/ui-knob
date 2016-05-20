@@ -57,6 +57,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "http://development.ui-knob.divshot.io"
+    "demoURL": "https://ui-knob.firebaseapp.com"
   }
 }
