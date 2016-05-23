@@ -1,6 +1,6 @@
 {
   "name": "ui-knob",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A visual knob slider for ambition Ember apps",
   "directories": {
     "doc": "doc",
@@ -20,7 +20,7 @@
   "devDependencies": {
     "bootstrap": "4.0.0-alpha.2",
     "broccoli-asset-rev": "^2.1.2",
-    "demo-helper": "0.0.1",
+    "demo-helper": "0.2.7",
     "ember-cli": "^2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-autoprefixer": "^0.6.0",
@@ -34,6 +34,7 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sass": "5.3.0",
     "ember-cli-sri": "^2.1.0",
+    "ember-cli-stylist": "0.4.4",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.4.0",
     "ember-disable-prototype-extensions": "^1.1.0",

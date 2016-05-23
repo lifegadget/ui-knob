@@ -2,15 +2,13 @@ import Ember from 'ember';
 const { keys, create } = Object; // jshint ignore:line
 const {computed, observer, $, A, run, on, typeOf, debug, defineProperty, get, set, inject, isEmpty} = Ember;  // jshint ignore:line
 import layout from '../templates/components/ui-knob';
-import Stylist from 'ui-knob/mixins/stylist';
+import Stylist from 'ember-cli-stylist/mixins/shared-stylist';
 const apiSurface = ['min','max','step','angleOffset','angleArc','stopper','readOnly','rotation','cursor','thickness','lineCap','width','height','dataWidth', 'displayInput','displayPrevious','fgColor','bgColor','inputColor','font','fontWeight','skin'];
 
 export default Ember.Component.extend(Stylist,{
-  layout: layout,
-  tagName: 'input',
+  layout,
+  tagName: '',
   type: 'text',
-  classNames: ['ui-knob', 'dial'],
-  attributeBindings: ['type','value','style'],
   value: 0,
   style: computed('width','uomHeight',function() {
     var width = this.get('width');
@@ -89,12 +87,12 @@ export default Ember.Component.extend(Stylist,{
 
   // INITIALISE / ON LOAD
   // --------------------
-  _init: on('didInsertElement', function() {
-    var isVisible = this.$().get(0).offsetWidth > 0;
-    if (isVisible) {
-      this.visibilityDidHappen();
-    }
-  }),
+  init() {
+    this._super(...arguments);
+    run.schedule('afterRender', () => {
+      this.initiateKnob();
+    });
+  },
   visibilityEventEmitter: function(context) {
     // since there is no specific DOM event for a change in visibility we must rely on
     // whatever component is creating this change to notify us via a bespoke event
@@ -114,43 +112,23 @@ export default Ember.Component.extend(Stylist,{
 
   // ASYNC EVENTS
   // -------------------
-  initiateKnob: on('didRender',function() {
-    this.set('isInitialised', true);
+  initiateKnob() {
     var options = this.buildOptions();
-    this.$().knob(options);
+    $(`#input-${this.elementId}`).knob(options);
     this.syncValue();
     this.benchmarkConfig();
     this.resizeDidHappen(); // get dimensions initialised on load
     this.resizeListener(); // add a listener for future resize events
-  }),
+  },
   resizeListener: function() {
     var localisedResize = `resize.${this.get('elementId')}`;
-    this.$(window).on(localisedResize, Ember.run.bind(this, this.trigger, ['resizeDidHappen']));
+    $(window).on(localisedResize, Ember.run.bind(this, this.trigger, ['resizeDidHappen']));
   },
-  visibilityListener: on('didInsertElement', function() {
-    // Listen for visibility event and signal a resize when it happens
-    // note: this listener is placed on a DOM element which is assumed
-    //       to always be visibile so no need to wait on placing this listener
-    var self = this;
-    Ember.run.schedule('afterRender', function() {
-      var $selector = self.get('visibilityEventEmitter')(self);
-      $selector.on(self.get('visibilityEventName'), Ember.run.bind(self, self.visibilityDidHappen ));
-    });
-  }),
+
   unbindListeners: on('willDestroyElement', function() {
     var localisedResize = `resize.${this.get('elementId')}`;
-      this.$(window).off(localisedResize);
+      $(window).off(localisedResize);
     }),
-  visibilityDidHappen: function() {
-    // On the first visibility event, the component must be initialised
-    if(!this.get('isInitialised')) {
-      this.initiateKnob();
-    } else {
-      // force a resize assessment as window sizing may have changed
-      // since last time component was visible
-      this.resizeDidHappen();
-    }
-  },
   configDidChange() {
     const _config = this._config;
     const changedConfig = apiSurface.filter(item => {
@@ -158,7 +136,7 @@ export default Ember.Component.extend(Stylist,{
     });
     const newConfig = this.getProperties(...changedConfig);
     Ember.run.schedule('afterRender', () => {
-      this.$().trigger('configure', newConfig);
+      $(`#input-${this.elementId}`).trigger('configure', newConfig);
       this.benchmarkConfig();
     });
   },
@@ -168,18 +146,18 @@ export default Ember.Component.extend(Stylist,{
   resizeDidHappen() {
     var self = this;
     Ember.run.schedule('afterRender', function() {
-      var isVisible = self.$().get(0).offsetWidth > 0;
+      var isVisible = $(`#input-${self.elementId}`).get(0).offsetWidth > 0;
       if (isVisible) {
         // get dimensions
-        var newWidth = Number(self.$().parent().get(0).offsetWidth);
-        var newHeight = Number(self.$().parent().get(0).offsetHeight);
+        var newWidth = Number($(`#input-${self.elementId}`).get(0).offsetWidth);
+        var newHeight = Number($(`#input-${self.elementId}`).offsetHeight);
         var uomVerticalPosition = Math.floor(newHeight / 3);
         // set instance variables
         self.set('width', newWidth);
         self.set('height', newWidth);
         self.set('uomVerticalPosition', uomVerticalPosition); // set pixels above the bottom of the knob
         // adjust knob width/height
-        self.$('.knob').trigger(
+        $(`#input-${self.elementId}`).trigger(
           'configure',
           {
             width: newWidth,
@@ -194,7 +172,7 @@ export default Ember.Component.extend(Stylist,{
     Ember.run.debounce(this, this.syncValue, 300, false);
   }),
   syncValue: function() {
-    this.$('.knob').val(Number(this.get('value'))).trigger('change');
+    $(`#input-${this.elementId}`).val(Number(this.get('value'))).trigger('change');
   }
 
 });

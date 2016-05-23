@@ -4,8 +4,8 @@ export default Ember.Controller.extend({
 
   min: 0,
   max: 100,
-  height: 150,
-  width:150,
+  height: 300,
+  width:300,
   thickness: 0.3,
   value: 25,
   angleOffset: 10,

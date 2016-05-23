@@ -1,1 +1,9 @@
-{{yield}}
+<knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}' style={{stylist}}>
+
+  {{yield}}
+
+  <input
+    id="input-{{elementId}}"
+    type=type
+  />
+</knob>
