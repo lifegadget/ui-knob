@@ -1,20 +1,18 @@
 import Ember from 'ember';
-const { keys, create } = Object; // jshint ignore:line
-const {computed, observer, $, A, run, on, typeOf, debug, defineProperty, get, set, inject, isEmpty} = Ember;  // jshint ignore:line
 import layout from '../templates/components/ui-knob';
 import Stylist from 'ember-cli-stylist/mixins/shared-stylist';
+import DDAU from '../mixins/ddau';
+
+const { keys, create } = Object; // jshint ignore:line
+const {computed, observer, $, A, run, on, typeOf, debug, defineProperty, get, set, inject, isEmpty} = Ember;  // jshint ignore:line
 const apiSurface = ['min','max','step','angleOffset','angleArc','stopper','readOnly','rotation','cursor','thickness','lineCap','width','height','dataWidth', 'displayInput','displayPrevious','fgColor','bgColor','inputColor','font','fontWeight','skin'];
 
-export default Ember.Component.extend(Stylist,{
+export default Ember.Component.extend(DDAU, Stylist,{
   layout,
   tagName: '',
   type: 'text',
   value: 0,
-  style: computed('width','uomHeight',function() {
-    var width = this.get('width');
-    var top = this.get('uomHeight');
-    return 'display: block; position: relative; width: ' + width + 'px; ' + 'bottom: ' + top + 'px; ';
-  }),
+
 
   // Behaviour props
   min: 0,
@@ -41,7 +39,7 @@ export default Ember.Component.extend(Stylist,{
   }),
   hasUom: Ember.computed.bool('uom'),
   height: 100,
-  displayInput: true,
+  displayInput: false, // the ui-knob's input should ALWAYS be hidden
   displayPrevious: true,
   fgColor: '#66CC66',
   bgColor: '#EFEEEE',
@@ -58,67 +56,55 @@ export default Ember.Component.extend(Stylist,{
         o[item] = Number(o[item]);
       }
     });
+    o.displayInput = false;
 
     return o;
   },
-  buildOptions() {
-    var self = this;
-    let o = this.getOptions();
-    // ADD EVENTS
-    o.change = function(value) {
-      Ember.run.schedule('afterRender', function() {
-        self.set('interimValue', value);
-      });
-    };
-    o.release = function(value) {
-      Ember.run.schedule('afterRender', function() {
-        self.set('value', value);
-        self.sendAction('released');
-      });
-    };
-    o.cancel = function() {
-      Ember.run.schedule('afterRender', function() {
-        this.sendAction('cancelled');
-      });
-    };
-
-    return o;
+  rememberOptions(o) {
+    this._config = o;
   },
+
 
   // INITIALISE / ON LOAD
   // --------------------
-  init() {
+  didInsertElement() {
     this._super(...arguments);
-    run.schedule('afterRender', () => {
-      this.initiateKnob();
-    });
+    this.initiateKnob();
   },
-  visibilityEventEmitter: function(context) {
-    // since there is no specific DOM event for a change in visibility we must rely on
-    // whatever component is creating this change to notify us via a bespoke event
-    // this function is setup for a Bootstrap tab pane; for other event emmitters you will have to build your own
-    try {
-      var thisTabPane = context.$().closest('.tab-pane').attr('id');
-      var $emitter = context.$().closest('.tab-content').siblings('[role=tabpanel]').find('li a[aria-controls=' + thisTabPane + ']');
-      return $emitter;
-    } catch(e) {
-      console.log('Problem getting event emitter: %o', e);
-    }
-
-    return false;
-  },
-  visibilityEventName: 'shown.bs.tab',
-  isInitialised: false,
 
   // ASYNC EVENTS
   // -------------------
   initiateKnob() {
-    var options = this.buildOptions();
+    var options = this.getOptions();
+    this.rememberOptions(options);
     $(`#input-${this.elementId}`).knob(options);
+    this.addEventCallbacks(options);
     this.syncValue();
-    this.benchmarkConfig();
     this.resizeDidHappen(); // get dimensions initialised on load
     this.resizeListener(); // add a listener for future resize events
+  },
+  addEventCallbacks(o) {
+    // EVENT CALLBACKS
+    o.change = function(value) {
+      this.set('_value', value);
+      this.ddau('onChange', {
+        code: 'value-changing',
+        value: value,
+        oldValue: this.get('value')
+      }, value);
+      console.log('changing: ', value);
+    }.bind(this);
+    o.release = function(value) {
+      this.ddau('onBlur', {
+        code: 'value-changed',
+        value: value,
+        oldValue: this.get('value')
+      }, value);
+      console.log('CHANGED: ', value);
+    }.bind(this);
+    o.cancel = function() {
+      this.sendAction('cancelled');
+    }.bind(this);
   },
   resizeListener: function() {
     var localisedResize = `resize.${this.get('elementId')}`;
@@ -137,11 +123,7 @@ export default Ember.Component.extend(Stylist,{
     const newConfig = this.getProperties(...changedConfig);
     Ember.run.schedule('afterRender', () => {
       $(`#input-${this.elementId}`).trigger('configure', newConfig);
-      this.benchmarkConfig();
     });
-  },
-  benchmarkConfig() {
-    this.set('_config', this.getOptions());
   },
   resizeDidHappen() {
     var self = this;
@@ -164,7 +146,7 @@ export default Ember.Component.extend(Stylist,{
             height: newWidth
           }
         );
-        self.benchmarkConfig();
+        // self.benchmarkConfig();
       }
     });
   },

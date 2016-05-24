@@ -1,4 +1,13 @@
-.ui-knob {
+knob.ui-knob {
   display: flex;
-  flex: 1 0;
+  position: relative;
+  flex: 1 0 100%;
+}
+
+.ui-knob > div,
+svg.ui-knob-background,
+svg.ui-input-plate {
+  position: absolute;;
+  left: 0;
+  top: 0;
 }

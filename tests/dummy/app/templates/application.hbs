@@ -55,24 +55,38 @@
       Basic usage includes setting properties such as:
       <br/>
       <controls>
-      <control>
-        <span class='name'>min:</span>
-        <span>
-          {{numeric-input value=min step=10 skin='flat' size='small' defaultValue=0 onChange=(mut min)}}
-        </span>
-        <span class='name'>max:</span>
-        <span>
-          {{numeric-input value=max step=10 skin='flat' size='small' defaultValue=100}}
-        </span>
-        <span class='name'>step:</span>
-        <span>
-          {{text-input value=step skin='flat' size='small' defaultValue=100}}
-        </span>
-      </control>
+        <control>
+          <span class='name'>width:</span>
+          <span>
+            {{text-input value=width step=10 skin='flat' size='small' defaultValue=0 onBlur=(mut width)}}
+          </span>
+          <span class='name'>height:</span>
+          <span>
+            {{text-input value=height step=10 skin='flat' size='small' defaultValue=100 onBlur=(mut height)}}
+          </span>
+          <span class='name'>step:</span>
+          <span>
+            {{text-input value=step skin='flat' size='small' defaultValue=100 onChange=(mut step)}}
+          </span>
+        </control>
+        <control>
+          <span class='name'>min:</span>
+          <span>
+            {{text-input value=min step=10 skin='flat' size='small' defaultValue=0 onChange=(mut min)}}
+          </span>
+          <span class='name'>max:</span>
+          <span>
+            {{text-input value=max step=10 skin='flat' size='small' defaultValue=100 onChange=(mut max)}}
+          </span>
+          <span class='name'>step:</span>
+          <span>
+            {{text-input value=step skin='flat' size='small' defaultValue=100 onChange=(mut step)}}
+          </span>
+        </control>
       <control>
         <span class='name'>thickness:</span>
         <span>
-          {{text-input value=thickness skin='flat' size='small' min=0 max=1 step=0.1}} &nbsp;
+          {{text-input value=thickness skin='flat' size='small' min=0 max=1 step=0.1 onBlur=(mut thickness)}} &nbsp;
         </span>
       </control>
       <control>
