@@ -18,5 +18,9 @@ export default Ember.Controller.extend({
   fgColor: '#66CC66',
   backColor: '#fff',
   plateColor: '#fff',
-  outline: 0
+  outline: 0,
+  lower: 'thingys',
+  upper: '',
+  pre: '',
+  post: ''
 });

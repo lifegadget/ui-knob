@@ -44,5 +44,7 @@ knob .value-bar {
 
 knob .value-bar .input {
   display: flex;
-  flex-basis: 3em;
+  flex: 1 0;
+  max-width: 50%;
+  text-align: center;
 }

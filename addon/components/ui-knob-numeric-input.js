@@ -7,9 +7,13 @@ const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
 const { get, set, debug } = Ember; // jshint ignore:line
 const a = Ember.A; // jshint ignore:line
 
-export default Ember.Component.extend({
+const numericInput = Ember.Component.extend({
   layout,
   tagName:'',
+  pre: null,
+  post: null,
+  upper: null,
+  lower: null,
 
   width: null, // this is the overall width
   _width: computed('width', 'offset', function() {
@@ -27,6 +31,9 @@ export default Ember.Component.extend({
     const {_thickness} = this.getProperties('_thickness');
     return _thickness;
   }),
-
-
 });
+numericInput.reopenClass({
+  positionalParams: ['value']
+});
+numericInput[Ember.NAME_KEY] = 'numeric-input';
+export default numericInput;

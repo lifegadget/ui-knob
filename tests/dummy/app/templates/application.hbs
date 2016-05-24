@@ -29,6 +29,8 @@
         bgColor=bgColor
         backColor=backColor
         plateColor=plateColor
+        lower=lower
+        upper=upper
         onBlur=(mut value)
       }}
     </widget>
@@ -54,6 +56,8 @@
         bgColor=bgColor
         backColor=backColor
         plateColor=plateColor
+        lower=lower
+        upper=upper
         onBlur=(mut value)
      }}
     </code>
@@ -193,6 +197,26 @@
         <span class='name'>plateColor:</span>
         <span>
           {{text-input value=plateColor skin='flat' size='small' defaultValue='#fff' onBlur=(mut plateColor)}}
+        </span>
+      </control>
+      <control>
+        <span class='name'>pre:</span>
+        <span>
+          {{text-input value=pre skin='flat' size='small' defaultValue='things' onBlur=(mut pre)}}
+        </span>
+        <span class='name'>post:</span>
+        <span>
+          {{text-input value=post skin='flat' size='small' defaultValue='' onBlur=(mut post)}}
+        </span>
+      </control>
+      <control>
+        <span class='name'>lower:</span>
+        <span>
+          {{text-input value=lower skin='flat' size='small' defaultValue='things' onBlur=(mut lower)}}
+        </span>
+        <span class='name'>upper:</span>
+        <span>
+          {{text-input value=upper skin='flat' size='small' defaultValue='' onBlur=(mut upper)}}
         </span>
       </control>
       </controls>

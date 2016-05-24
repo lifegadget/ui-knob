@@ -1,20 +1,19 @@
 {{#if readOnly}}
-<span>FOOBAR</span>
   <span class="numeric-value">{{_value}}</span>
 {{else}}
   <input-bar class="value-column" style="top:{{offset}}px; left: {{offset}}px; width: {{_width}}px; height: {{_width}}px; )">
     <div class="upper">
-      upper
+      {{upper}}
     </div>
     <div class="value-bar fill">
-      <span class="pre" >PRE</span>
+      <span class="pre-input" >{{pre}}</span>
       <span class='input'>
-        {{text-input value=value size='large' onBlur=(mut value) align='center'}}
+        {{text-input skin='minimal' value=value size='huge' onBlur=(mut value) align='center'}}
       </span>
-      <span class="post" >POST</span>
+      <span class="post-input" >{{post}}</span>
     </div>
     <div class="lower">
-      lower
+      {{lower}}
     </div>
   </input-bar>
 {{/if}}

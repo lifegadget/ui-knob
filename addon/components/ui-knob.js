@@ -17,7 +17,7 @@ export default Ember.Component.extend(DDAU, Stylist,{
       return value;
     },
     get() {
-      return this.get('value')
+      return this.get('value');
     }
   }),
 
