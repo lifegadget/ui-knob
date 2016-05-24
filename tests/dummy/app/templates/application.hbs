@@ -31,6 +31,8 @@
         plateColor=plateColor
         lower=lower
         upper=upper
+        pre=pre
+        post=post
         onBlur=(mut value)
       }}
     </widget>
@@ -58,6 +60,8 @@
         plateColor=plateColor
         lower=lower
         upper=upper
+        pre=pre
+        post=post
         onBlur=(mut value)
      }}
     </code>
@@ -206,7 +210,7 @@
         </span>
         <span class='name'>post:</span>
         <span>
-          {{text-input value=post skin='flat' size='small' defaultValue='' onBlur=(mut post)}}
+          {{text-input value=post skin='flat' size='small' onBlur=(mut post)}}
         </span>
       </control>
       <control>
@@ -216,7 +220,7 @@
         </span>
         <span class='name'>upper:</span>
         <span>
-          {{text-input value=upper skin='flat' size='small' defaultValue='' onBlur=(mut upper)}}
+          {{text-input value=upper skin='flat' size='small' onBlur=(mut upper)}}
         </span>
       </control>
       </controls>
