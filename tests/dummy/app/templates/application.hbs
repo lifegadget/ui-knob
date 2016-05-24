@@ -27,6 +27,9 @@
         readOnly=readOnly
         fgColor=fgColor
         bgColor=bgColor
+        backColor=backColor
+        plateColor=plateColor
+        onBlur=(mut value)
       }}
     </widget>
     <code>
@@ -49,6 +52,9 @@
         readOnly=readOnly
         fgColor=fgColor
         bgColor=bgColor
+        backColor=backColor
+        plateColor=plateColor
+        onBlur=(mut value)
      }}
     </code>
     <description>
@@ -87,6 +93,10 @@
         <span class='name'>thickness:</span>
         <span>
           {{text-input value=thickness skin='flat' size='small' min=0 max=1 step=0.1 onBlur=(mut thickness)}} &nbsp;
+        </span>
+        <span class='name'>outline:</span>
+        <span>
+          {{text-input value=outline skin='flat' size='small' min=0 max=1 step=0.1 onBlur=(mut outline)}} &nbsp;
         </span>
       </control>
       <control>
@@ -173,6 +183,16 @@
         <span class='name'>bgColor:</span>
         <span>
           {{text-input value=bgColor skin='flat' size='small' defaultValue='#EFEEEE' onBlur=(mut bgColor)}}
+        </span>
+      </control>
+      <control>
+        <span class='name'>backColor:</span>
+        <span>
+          {{text-input value=backColor skin='flat' size='small' defaultValue='#66CC66' onBlur=(mut backColor)}}
+        </span>
+        <span class='name'>plateColor:</span>
+        <span>
+          {{text-input value=plateColor skin='flat' size='small' defaultValue='#fff' onBlur=(mut plateColor)}}
         </span>
       </control>
       </controls>

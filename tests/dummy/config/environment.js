@@ -14,7 +14,7 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'unsafe-eval' http://cloudfront.net",
-      'script-src': "'self' ",
+      'script-src': "'self' 'unsafe-inline'",
       'font-src': "'self' http://fonts.gstatic.com http://fonts.googleapis.com",
       'connect-src': "'self'",
       'img-src': "'self'",

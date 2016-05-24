@@ -29,12 +29,10 @@ const plate = Ember.Component.extend({
     return (dimension * thickness) / 2;
   }),
 
-
   actions: {
-    clickKill(e) {
-      console.log('kill prop');
-      // e.preventDefault();
-      // e.stopPropagation();
+    killClicks() {
+      // don't need to do anything, just want to block interior clicks
+      // going to the knob component
     }
   }
 

@@ -1,6 +1,6 @@
 <knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}' style={{stylist}}>
 
-  {{ui-knob-background  width=width height=height}}
+  {{ui-knob-background color=backColor width=width height=height}}
   {{yield}}
 
   <input
@@ -8,6 +8,6 @@
     type=type
   />
 
-  {{ui-knob-input-plate color='red' width=width height=height thickness=thickness }}
-  {{ui-knob-numeric-input value=value readyOnly=readOnly}}
+  {{ui-knob-input-plate color=plateColor width=width height=height thickness=thickness }}
+  {{ui-knob-numeric-input value=value width=width height=height thickness=thickness readyOnly=readOnly}}
 </knob>

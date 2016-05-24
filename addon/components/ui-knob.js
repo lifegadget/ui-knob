@@ -12,7 +12,14 @@ export default Ember.Component.extend(DDAU, Stylist,{
   tagName: '',
   type: 'text',
   value: 0,
-
+  _value: computed('value', {
+    set(_, value) {
+      return value;
+    },
+    get() {
+      return this.get('value')
+    }
+  }),
 
   // Behaviour props
   min: 0,
@@ -76,9 +83,9 @@ export default Ember.Component.extend(DDAU, Stylist,{
   // -------------------
   initiateKnob() {
     var options = this.getOptions();
+    this.addEventCallbacks(options);
     this.rememberOptions(options);
     $(`#input-${this.elementId}`).knob(options);
-    this.addEventCallbacks(options);
     this.syncValue();
     this.resizeDidHappen(); // get dimensions initialised on load
     this.resizeListener(); // add a listener for future resize events
@@ -92,15 +99,14 @@ export default Ember.Component.extend(DDAU, Stylist,{
         value: value,
         oldValue: this.get('value')
       }, value);
-      console.log('changing: ', value);
     }.bind(this);
     o.release = function(value) {
+      this.set('_value', value);
       this.ddau('onBlur', {
         code: 'value-changed',
         value: value,
         oldValue: this.get('value')
       }, value);
-      console.log('CHANGED: ', value);
     }.bind(this);
     o.cancel = function() {
       this.sendAction('cancelled');

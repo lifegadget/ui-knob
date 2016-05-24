@@ -1,5 +1,7 @@
 knob.ui-knob {
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   flex: 1 0 100%;
 }
@@ -10,4 +12,37 @@ svg.ui-input-plate {
   position: absolute;;
   left: 0;
   top: 0;
+}
+
+knob .numeric-value {
+  display:flex;
+  flex: 0 0 50%;
+  max-width: 50%;
+  font-size: 3em;
+  height: 3.5em;
+}
+
+knob input-bar {
+  display: flex;
+  position: absolute;
+  flex: 1 0;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+knob .value-bar {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  width: 100%;
+}
+
+knob .value-bar .input {
+  display: flex;
+  flex-basis: 3em;
 }
