@@ -1,9 +1,15 @@
-<knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}' style={{stylist}}>
+<knob id="{{elementId}}" class='{{if class (concat class ' ')}}ui-knob' style={{stylist}}>
 
   {{yield}}
 
-  <input
-    id="input-{{elementId}}"
-    type=type
-  />
+  <relativity-frame>
+    <canvas
+      id="knob-{{elementId}}"
+      role="input"
+      width="400"
+      height="400"
+    ></canvas>
+    {{text-input value=value onBlur=(mut value)}}
+  </relativity-frame>
+
 </knob>

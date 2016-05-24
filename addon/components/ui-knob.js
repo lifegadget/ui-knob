@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import { arc, pie } from 'd3-shape';
+
 const { keys, create } = Object; // jshint ignore:line
 const {computed, observer, $, A, run, on, typeOf, debug, defineProperty, get, set, inject, isEmpty} = Ember;  // jshint ignore:line
 import layout from '../templates/components/ui-knob';
@@ -10,11 +12,6 @@ export default Ember.Component.extend(Stylist,{
   tagName: '',
   type: 'text',
   value: 0,
-  style: computed('width','uomHeight',function() {
-    var width = this.get('width');
-    var top = this.get('uomHeight');
-    return 'display: block; position: relative; width: ' + width + 'px; ' + 'bottom: ' + top + 'px; ';
-  }),
 
   // Behaviour props
   min: 0,
@@ -48,131 +45,69 @@ export default Ember.Component.extend(Stylist,{
   inputColor: 'black',
   font: 'Arial',
   fontWeight: 'normal',
-  _configListener: observer(...apiSurface, function() {
-    this.configDidChange();
-  }),
-  getOptions() {
-    var o = this.getProperties(apiSurface);
-    ['min','max','step'].map(item => {
-      if(o[item]) {
-        o[item] = Number(o[item]);
-      }
-    });
 
-    return o;
-  },
-  buildOptions() {
-    var self = this;
-    let o = this.getOptions();
-    // ADD EVENTS
-    o.change = function(value) {
-      Ember.run.schedule('afterRender', function() {
-        self.set('interimValue', value);
-      });
-    };
-    o.release = function(value) {
-      Ember.run.schedule('afterRender', function() {
-        self.set('value', value);
-        self.sendAction('released');
-      });
-    };
-    o.cancel = function() {
-      Ember.run.schedule('afterRender', function() {
-        this.sendAction('cancelled');
-      });
-    };
-
-    return o;
-  },
-
-  // INITIALISE / ON LOAD
-  // --------------------
-  init() {
+  didInsertElement() {
     this._super(...arguments);
-    run.schedule('afterRender', () => {
-      this.initiateKnob();
+    var data = [1, 13];
+
+    var canvas = document.querySelector("canvas"),
+        context = canvas.getContext("2d");
+
+    var width = canvas.width,
+        height = canvas.height,
+        radius = Math.min(width, height) / 2;
+
+    var colors = [
+      "#1f77b4", "#dedbdb","#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+      "#8c564b", "#e377c2", , "#bcbd22", "#17becf"
+    ];
+
+    var outerRadius = radius - 10,
+        cornerRadius = 0;
+
+    const clicked = function(i) {
+      console.log(i);
+    };
+
+    var myarc = arc()
+        .outerRadius(outerRadius)
+        .innerRadius(150)
+        .on('click', clicked)
+        // .startAngle(0.5 * Math.PI)
+        // .endAngle(2.0 * Math.PI)
+        .cornerRadius(cornerRadius)
+        .context(context);
+
+    var p = pie();
+
+    var arcs = p(data);
+
+    context.translate(width / 2, height / 2);
+
+    context.globalAlpha = 0.5;
+    arcs.forEach(function(d, i) {
+      context.beginPath();
+      myarc(d);
+      context.fillStyle = colors[i];
+      context.fill();
     });
-  },
-  visibilityEventEmitter: function(context) {
-    // since there is no specific DOM event for a change in visibility we must rely on
-    // whatever component is creating this change to notify us via a bespoke event
-    // this function is setup for a Bootstrap tab pane; for other event emmitters you will have to build your own
-    try {
-      var thisTabPane = context.$().closest('.tab-pane').attr('id');
-      var $emitter = context.$().closest('.tab-content').siblings('[role=tabpanel]').find('li a[aria-controls=' + thisTabPane + ']');
-      return $emitter;
-    } catch(e) {
-      console.log('Problem getting event emitter: %o', e);
+
+    context.globalAlpha = 1;
+    context.beginPath();
+    arcs.forEach(myarc);
+    context.lineWidth = 1.5;
+    context.strokeStyle = "#fff";
+    context.stroke();
+
+    function corner(angle, radius, sign) {
+      context.save();
+      context.translate(
+        sign * cornerRadius * Math.cos(angle) + Math.sqrt(radius * radius - cornerRadius * cornerRadius) * Math.sin(angle),
+        sign * cornerRadius * Math.sin(angle) - Math.sqrt(radius * radius - cornerRadius * cornerRadius) * Math.cos(angle)
+      );
+      // circle.outerRadius(cornerRadius - 1.5)();
+      context.restore();
     }
-
-    return false;
-  },
-  visibilityEventName: 'shown.bs.tab',
-  isInitialised: false,
-
-  // ASYNC EVENTS
-  // -------------------
-  initiateKnob() {
-    var options = this.buildOptions();
-    $(`#input-${this.elementId}`).knob(options);
-    this.syncValue();
-    this.benchmarkConfig();
-    this.resizeDidHappen(); // get dimensions initialised on load
-    this.resizeListener(); // add a listener for future resize events
-  },
-  resizeListener: function() {
-    var localisedResize = `resize.${this.get('elementId')}`;
-    $(window).on(localisedResize, Ember.run.bind(this, this.trigger, ['resizeDidHappen']));
-  },
-
-  unbindListeners: on('willDestroyElement', function() {
-    var localisedResize = `resize.${this.get('elementId')}`;
-      $(window).off(localisedResize);
-    }),
-  configDidChange() {
-    const _config = this._config;
-    const changedConfig = apiSurface.filter(item => {
-      return this[item] !== _config[item];
-    });
-    const newConfig = this.getProperties(...changedConfig);
-    Ember.run.schedule('afterRender', () => {
-      $(`#input-${this.elementId}`).trigger('configure', newConfig);
-      this.benchmarkConfig();
-    });
-  },
-  benchmarkConfig() {
-    this.set('_config', this.getOptions());
-  },
-  resizeDidHappen() {
-    var self = this;
-    Ember.run.schedule('afterRender', function() {
-      var isVisible = $(`#input-${self.elementId}`).get(0).offsetWidth > 0;
-      if (isVisible) {
-        // get dimensions
-        var newWidth = Number($(`#input-${self.elementId}`).get(0).offsetWidth);
-        var newHeight = Number($(`#input-${self.elementId}`).offsetHeight);
-        var uomVerticalPosition = Math.floor(newHeight / 3);
-        // set instance variables
-        self.set('width', newWidth);
-        self.set('height', newWidth);
-        self.set('uomVerticalPosition', uomVerticalPosition); // set pixels above the bottom of the knob
-        // adjust knob width/height
-        $(`#input-${self.elementId}`).trigger(
-          'configure',
-          {
-            width: newWidth,
-            height: newWidth
-          }
-        );
-        self.benchmarkConfig();
-      }
-    });
-  },
-  valueDidChange: observer('value', function() {
-    Ember.run.debounce(this, this.syncValue, 300, false);
-  }),
-  syncValue: function() {
-    $(`#input-${this.elementId}`).val(Number(this.get('value'))).trigger('change');
   }
 
 });
