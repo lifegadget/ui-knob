@@ -1,20 +1,17 @@
-{{#if readOnly}}
-  <span class="numeric-value">{{_value}}</span>
-{{else}}
-  <input-bar class="value-column" style="top:{{offset}}px; left: {{offset}}px; width: {{_width}}px; height: {{_width}}px; )">
-    <div class="upper">
-      {{upper}}
-    </div>
-    <div class="value-bar fill">
-      <span class="pre-input" >{{pre}}</span>
-      <span class='input'>
-        {{text-input skin='minimal' value=value size='huge' onBlur=(mut value) align='center'}}
-      </span>
-      <span class="post-input" >{{post}}</span>
-    </div>
-    <div class="lower">
-      {{lower}}
-    </div>
-  </input-bar>
-{{/if}}
+<input-bar class="value-column" style="top:{{offset}}px; left: {{offset}}px; width: {{_width}}px; height: {{_width}}px; )">
+  <div class="upper">
+    {{upper}}
+  </div>
+  <div class="value-bar fill">
+    <span class="pre-input" >{{pre}}</span>
+    <span class='input'>
+      {{text-input skin='minimal' value=value size='huge' onBlur=(mut value) align='center' readOnly=readOnly}}
+    </span>
+    <span class="post-input" >{{post}}</span>
+  </div>
+  <div class="lower">
+    {{lower}}
+  </div>
+</input-bar>
+
 {{yield}}

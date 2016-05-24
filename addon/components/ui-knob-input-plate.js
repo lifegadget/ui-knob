@@ -15,6 +15,8 @@ const plate = Ember.Component.extend({
   height: null,
   thickness: null,
   color: '#fff',
+  leftRight: false,
+  upDown: false,
   dimensions: computed('radius', function() {
     return this.get('radius') * 2;
   }),

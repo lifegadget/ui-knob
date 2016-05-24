@@ -15,5 +15,18 @@
       {{action 'killClicks' on="click"}}
     ></circle>
 </svg>
+{{#if upDown}}
+  up down
+{{/if}}
+
+{{#if (gt leftRight 0)}}
+  {{ui-knob-iterator class='left' min=min max=max amount=(inverse leftRight)}}
+  {{ui-knob-iterator class='right' min=min max=max amount=leftRight}}
+{{/if}}
+
+{{#if (gt upDown 0)}}
+  {{ui-knob-iterator class='up' min=min max=max amount=(inverse upDown)}}
+  {{ui-knob-iterator class='down' min=min max=max amount=upDown}}
+{{/if}}
 
 {{yield}}

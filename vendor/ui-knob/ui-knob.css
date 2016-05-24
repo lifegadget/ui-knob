@@ -48,3 +48,43 @@ knob .value-bar .input {
   max-width: 50%;
   text-align: center;
 }
+
+knob iterator {
+  display: flex;
+  position: absolute;
+  flex: 0 1;
+  text-align: center;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  color: lightgrey;
+  font-weight: 200;
+}
+knob iterator:hover {
+  color: black;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+
+knob iterator.left {
+  top: calc(50% - 0.5em);
+  left: 3em;
+  transform: rotate(180deg);
+}
+knob iterator.right {
+  top: calc(50% - 0.5em);
+  right: 3em;
+}
+knob iterator.up {
+  top: 3em;
+  right: calc(50% - 0.5em);
+  transform: rotate(270deg);
+}
+knob iterator.down {
+  bottom: 3em;
+  right: calc(50% - 0.5em);
+  transform: rotate(90deg);
+}

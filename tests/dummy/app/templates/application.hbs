@@ -1,3 +1,4 @@
+
 {{#demo-css}}
 <div class="container">
   <h1 id="title"><a href="https://github.com/lifegadget/ui-knob">ui-knob</a></h1>
@@ -33,6 +34,8 @@
         upper=upper
         pre=pre
         post=post
+        upDown=upDown
+        leftRight=leftRight
         onBlur=(mut value)
       }}
     </widget>
@@ -62,6 +65,8 @@
         upper=upper
         pre=pre
         post=post
+        upDown=upDown
+        leftRight=leftRight
         onBlur=(mut value)
      }}
     </code>
@@ -167,6 +172,7 @@
           {{ui-toggle-button
             on='true'
             false='false'
+            outline=true
             value=readOnly
             onToggle=(mut readOnly)
           }}
@@ -180,6 +186,28 @@
             cardinality='1:1'
             value=cursor
             onChange=(mut cursor)
+          }}
+        </span>
+      </control>
+      <control>
+        <span class='name'>leftRight <br> (incrementer)</span>
+        <span>
+          {{ui-buttons
+            buttons='off:::0,1,5'
+            cardinality='1:1'
+            value=leftRight
+            onChange=(mut leftRight)
+          }}
+        </span>
+      </control>
+      <control>
+        <span class='name'>upDown <br>(incrementer)</span>
+        <span>
+          {{ui-buttons
+            buttons='off:::0,15,30'
+            cardinality='1:1'
+            value=upDown
+            onChange=(mut upDown)
           }}
         </span>
       </control>

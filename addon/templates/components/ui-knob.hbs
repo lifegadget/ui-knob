@@ -13,17 +13,21 @@
     width=width
     height=height
     thickness=thickness
+    leftRight=leftRight
+    upDown=upDown
   }}
 
-  {{ui-knob-numeric-input
-    value=value
-    width=width
-    height=height
-    thickness=thickness
-    readyOnly=readOnly
-    upper=upper
-    lower=lower
-    pre=pre
-    post=post
-  }}
+  {{#if displayInput}}
+    {{ui-knob-numeric-input
+      value=value
+      width=width
+      height=height
+      thickness=thickness
+      readyOnly=readOnly
+      upper=upper
+      lower=lower
+      pre=pre
+      post=post
+    }}
+  {{/if}}
 </knob>

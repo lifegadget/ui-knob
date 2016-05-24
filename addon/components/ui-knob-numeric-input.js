@@ -10,6 +10,7 @@ const a = Ember.A; // jshint ignore:line
 const numericInput = Ember.Component.extend({
   layout,
   tagName:'',
+  
   pre: null,
   post: null,
   upper: null,

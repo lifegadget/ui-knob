@@ -22,5 +22,7 @@ export default Ember.Controller.extend({
   lower: 'thingys',
   upper: '',
   pre: '',
-  post: ''
+  post: '',
+  leftRight: 0,
+  upDown: 0,
 });
