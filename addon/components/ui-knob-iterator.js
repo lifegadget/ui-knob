@@ -14,7 +14,7 @@ const iterator = Ember.Component.extend(DDAU,{
   actions: {
     onIterate() {
       const {value, min, max, amount} = this.getProperties('value', 'min', 'max', 'amount');
-      let newValue = value + Number(amount);
+      let newValue = Number(value) + Number(amount);
       let error;
       if(newValue < min) {
         error = 'min-value-breached';

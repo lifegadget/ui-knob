@@ -56,6 +56,10 @@ export default Ember.Component.extend(DDAU, Stylist,{
   _configListener: observer(...apiSurface, function() {
     this.configDidChange();
   }),
+  touch: computed(function() {
+    return window.ontouchstart || window.navigator.maxTouchPoints > 0 || window.navigator.msMaxTouchPoints;
+  }),
+  noTouch: computed.not('touch'),
   getOptions() {
     var o = this.getProperties(apiSurface);
     ['min','max','step'].map(item => {
@@ -153,7 +157,6 @@ export default Ember.Component.extend(DDAU, Stylist,{
             height: newWidth
           }
         );
-        // self.benchmarkConfig();
       }
     });
   },

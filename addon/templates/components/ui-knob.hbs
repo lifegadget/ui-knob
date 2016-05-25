@@ -1,4 +1,4 @@
-<knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}' style={{stylist}}>
+<knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}{{if noTouch ' no-touch'}}' style={{stylist}}>
 
   {{ui-knob-background color=backColor width=width height=height}}
   {{yield}}

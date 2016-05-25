@@ -41,11 +41,7 @@ const plate = Ember.Component.extend(DDAU, {
       this.proxyAction('onChange', hash);
     },
     onError(hash) {
-      if(this.attrs.onError) {
-        this.attrs.onError(hash);
-      } else {
-        debug(JSON.stringify(hash, null, 2));
-      }
+      this.proxyAction('onError', hash);
     }
   }
 

@@ -60,8 +60,9 @@ knob iterator {
   cursor: pointer;
   color: lightgrey;
   font-weight: 200;
+  user-select: none;
 }
-knob iterator:hover {
+knob.no-touch iterator:hover {
   color: black;
   font-weight: bold;
   transition: 0.5s;
