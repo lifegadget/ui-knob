@@ -9,7 +9,7 @@
 
   <h3>Basic Usage</h3>
   <row>
-    <widget>
+    <div class='col-xs-5 col-md-3'>
       {{ui-knob
         value=value
         min=min
@@ -36,43 +36,45 @@
         post=post
         upDown=upDown
         leftRight=leftRight
-        onBlur=(mut value)
+        onChange=(mut value)
+        onError=(action 'showError')
       }}
-    </widget>
-    <code>
-      {{display-component
-        componentName='ui-knob'
-        value=value
-        min=min
-        max=max
-        step=step
-        width=width
-        height=height
-        thickness=thickness
-        angleOffset=angleOffset
-        angleArc=angleArc
-        cursor=cursor
-        stopper=stopper
-        displayInput=displayInput
-        displayPrevious=displayPrevious
-        lineCap=lineCap
-        readOnly=readOnly
-        fgColor=fgColor
-        bgColor=bgColor
-        backColor=backColor
-        plateColor=plateColor
-        lower=lower
-        upper=upper
-        pre=pre
-        post=post
-        upDown=upDown
-        leftRight=leftRight
-        onBlur=(mut value)
-     }}
-    </code>
-    <description>
-      Basic usage includes setting properties such as:
-      <br/>
+    </div>
+    <div class="col-xs-7 col-md-3 col-lg-2">
+      <code>
+        {{display-component
+          componentName='ui-knob'
+          value=value
+          min=min
+          max=max
+          step=step
+          width=width
+          height=height
+          thickness=thickness
+          angleOffset=angleOffset
+          angleArc=angleArc
+          cursor=cursor
+          stopper=stopper
+          displayInput=displayInput
+          displayPrevious=displayPrevious
+          lineCap=lineCap
+          readOnly=readOnly
+          fgColor=fgColor
+          bgColor=bgColor
+          backColor=backColor
+          plateColor=plateColor
+          lower=lower
+          upper=upper
+          pre=pre
+          post=post
+          upDown=upDown
+          leftRight=leftRight
+          onChange="(mut value)"
+          onError="(action 'showError')"
+       }}
+      </code>
+    </div>
+    <div class='col-xs-12 col-md-6 col-lg-7'>
       <controls>
         <control>
           <span class='name'>width:</span>
@@ -82,10 +84,6 @@
           <span class='name'>height:</span>
           <span>
             {{text-input value=height step=10 skin='flat' size='small' defaultValue=100 onBlur=(mut height)}}
-          </span>
-          <span class='name'>step:</span>
-          <span>
-            {{text-input value=step skin='flat' size='small' defaultValue=100 onChange=(mut step)}}
           </span>
         </control>
         <control>
@@ -253,7 +251,7 @@
       </control>
       </controls>
 
-    </description>
+    </div>
   </row>
 
 </div>

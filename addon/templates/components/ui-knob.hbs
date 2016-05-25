@@ -9,12 +9,16 @@
   />
 
   {{ui-knob-input-plate
+    value=value
+    min=min
+    max=max
     color=plateColor
     width=width
     height=height
     thickness=thickness
     leftRight=leftRight
     upDown=upDown
+    onChange=(action 'onChange')
   }}
 
   {{#if displayInput}}

@@ -17,5 +17,14 @@ export default Ember.Mixin.create({
     } else {
       return false;
     }
-}
+  },
+
+  proxyAction(action, hash) {
+    if (this.attrs[action]) {
+      this.attrs[action](hash);
+    } else {
+      const message = JSON.stringify(hash, null, 2);
+      Ember.debug(`The action "${action}" is not being listened to on the container of ${this.elementId}.\n${message}\n\nThis message will not show in production environments.`);
+    }
+  }
 });

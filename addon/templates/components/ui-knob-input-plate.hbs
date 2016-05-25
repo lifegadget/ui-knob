@@ -20,13 +20,45 @@
 {{/if}}
 
 {{#if (gt leftRight 0)}}
-  {{ui-knob-iterator class='left' min=min max=max amount=(inverse leftRight)}}
-  {{ui-knob-iterator class='right' min=min max=max amount=leftRight}}
+  {{ui-knob-iterator
+    direction='left'
+    value=value
+    min=min
+    max=max
+    amount=(inverse leftRight)
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
+  {{ui-knob-iterator
+    direction='right'
+    value=value
+    min=min
+    max=max
+    amount=leftRight
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
 {{/if}}
 
 {{#if (gt upDown 0)}}
-  {{ui-knob-iterator class='up' min=min max=max amount=(inverse upDown)}}
-  {{ui-knob-iterator class='down' min=min max=max amount=upDown}}
+  {{ui-knob-iterator
+    direction='up'
+    value=value
+    min=min
+    max=max
+    amount=(inverse upDown)
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
+  {{ui-knob-iterator
+    direction='down'
+    value=value
+    min=min
+    max=max
+    amount=upDown
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
 {{/if}}
 
 {{yield}}

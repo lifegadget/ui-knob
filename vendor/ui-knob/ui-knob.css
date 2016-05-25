@@ -42,11 +42,10 @@ knob .value-bar {
   width: 100%;
 }
 
-knob .value-bar .input {
+knob .value-bar input {
   display: flex;
-  flex: 1 0;
-  max-width: 50%;
   text-align: center;
+  flex: 1 0;
 }
 
 knob iterator {

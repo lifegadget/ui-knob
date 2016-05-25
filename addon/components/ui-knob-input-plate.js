@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/ui-knob-input-plate';
+import DDAU from '../mixins/ddau';
 const { keys, create } = Object; // jshint ignore:line
 const { RSVP: {Promise, all, race, resolve, defer} } = Ember; // jshint ignore:line
 const { inject: {service} } = Ember; // jshint ignore:line
@@ -7,7 +8,7 @@ const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
 const { get, set, debug } = Ember; // jshint ignore:line
 const a = Ember.A; // jshint ignore:line
 
-const plate = Ember.Component.extend({
+const plate = Ember.Component.extend(DDAU, {
   layout,
   tagName: '',
 
@@ -35,6 +36,16 @@ const plate = Ember.Component.extend({
     killClicks() {
       // don't need to do anything, just want to block interior clicks
       // going to the knob component
+    },
+    onChange(hash) {
+      this.proxyAction('onChange', hash);
+    },
+    onError(hash) {
+      if(this.attrs.onError) {
+        this.attrs.onError(hash);
+      } else {
+        debug(JSON.stringify(hash, null, 2));
+      }
     }
   }
 

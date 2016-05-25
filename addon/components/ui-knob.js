@@ -94,15 +94,16 @@ export default Ember.Component.extend(DDAU, Stylist,{
     // EVENT CALLBACKS
     o.change = function(value) {
       this.set('_value', value);
-      this.ddau('onChange', {
+      const roundedValue = Math.round(value);
+      this.ddau('onDrag', {
         code: 'value-changing',
-        value: value,
+        value: roundedValue,
         oldValue: this.get('value')
-      }, value);
+      }, roundedValue);
     }.bind(this);
     o.release = function(value) {
       this.set('_value', value);
-      this.ddau('onBlur', {
+      this.ddau('onChange', {
         code: 'value-changed',
         value: value,
         oldValue: this.get('value')
@@ -157,10 +158,16 @@ export default Ember.Component.extend(DDAU, Stylist,{
     });
   },
   valueDidChange: observer('value', function() {
-    Ember.run.debounce(this, this.syncValue, 300, false);
+    Ember.run.debounce(this, this.syncValue, 30, false);
   }),
   syncValue: function() {
     $(`#input-${this.elementId}`).val(Number(this.get('value'))).trigger('change');
+  },
+
+  actions: {
+    onChange(hash) {
+      this.ddau('onChange', hash, hash.value);
+    }
   }
 
 });
