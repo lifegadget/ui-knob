@@ -1,4 +1,108 @@
-.ui-knob {
+knob.ui-knob {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex: 1 0 100%;
+}
+
+.ui-knob > div,
+svg.ui-knob-background,
+svg.ui-input-plate {
+  position: absolute;;
+  left: 0;
+  top: 0;
+}
+
+knob .numeric-value {
+  display:flex;
+  flex: 0 0 50%;
+  max-width: 50%;
+  font-size: 3em;
+  height: 3.5em;
+}
+
+knob input-bar {
+  display: flex;
+  position: absolute;
   flex: 1 0;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+knob .value-bar {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  width: 125%;
+}
+
+knob .value-bar input {
+  display: flex;
+  text-align: center;
+  flex: 1 0;
+  padding: 6px 6px !important;
+}
+
+knob .input-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.6rem;
+  line-height: 1.5;
+}
+
+knob .inbetween-marker {
+  font-size: 1.8rem;
+  color: lightgrey;
+}
+knob .blur-value {
+  color: darkgrey;
+}
+
+knob iterator {
+  display: flex;
+  position: absolute;
+  flex: 0 1;
+  text-align: center;
+  align-self: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  color: lightgrey;
+  font-weight: 200;
+  user-select: none;
+}
+knob.no-touch iterator:hover {
+  color: black;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+
+knob iterator.left {
+  top: calc(50% - 0.5em);
+  left: 3em;
+  transform: rotate(180deg);
+}
+knob iterator.right {
+  top: calc(50% - 0.5em);
+  right: 3em;
+}
+knob iterator.up {
+  top: 3em;
+  right: calc(50% - 0.5em);
+  transform: rotate(270deg);
+}
+knob iterator.down {
+  bottom: 3em;
+  right: calc(50% - 0.5em);
+  transform: rotate(90deg);
 }

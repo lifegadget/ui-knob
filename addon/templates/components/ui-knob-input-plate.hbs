@@ -1,0 +1,64 @@
+<svg
+  id={{elementId}}
+  class="ui-input-plate{{classy class name}}"
+  viewPort="0 0 {{dimensions}} {{dimensions}}"
+  width={{dimensions}}
+  height={{dimensions}}
+  style="top:{{offset}}px; left: {{offset}}px;"
+>
+    <circle
+      id="circle-{{elementId}}"
+      cx={{radius}}
+      cy={{radius}}
+      r={{radius}}
+      style="fill: {{color}};"
+      {{action 'killClicks' on="click"}}
+    ></circle>
+</svg>
+{{#if upDown}}
+  up down
+{{/if}}
+
+{{#if (gt leftRight 0)}}
+  {{ui-knob-iterator
+    direction='left'
+    value=value
+    min=min
+    max=max
+    amount=(inverse leftRight)
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
+  {{ui-knob-iterator
+    direction='right'
+    value=value
+    min=min
+    max=max
+    amount=leftRight
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
+{{/if}}
+
+{{#if (gt upDown 0)}}
+  {{ui-knob-iterator
+    direction='up'
+    value=value
+    min=min
+    max=max
+    amount=(inverse upDown)
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
+  {{ui-knob-iterator
+    direction='down'
+    value=value
+    min=min
+    max=max
+    amount=upDown
+    onIterate=(action 'onChange')
+    onError=(action 'onError')
+  }}
+{{/if}}
+
+{{yield}}

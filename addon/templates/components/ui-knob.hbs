@@ -1,9 +1,39 @@
-<knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}' style={{stylist}}>
+<knob id="{{elementId}}" class='ui-knob{{if class (concat ' ' class)}}{{if noTouch ' no-touch'}}' style={{stylist}}>
 
+  {{ui-knob-background color=backColor width=width height=height}}
   {{yield}}
 
   <input
     id="input-{{elementId}}"
     type=type
   />
+
+  {{ui-knob-input-plate
+    value=value
+    min=min
+    max=max
+    color=plateColor
+    width=width
+    height=height
+    thickness=thickness
+    leftRight=leftRight
+    upDown=upDown
+    onChange=(action 'onChange')
+  }}
+
+  {{#if displayInput}}
+    {{ui-knob-numeric-input
+      value=value
+      blurValue=_blurValue
+      step=step
+      width=width
+      height=height
+      thickness=thickness
+      readyOnly=readOnly
+      upper=upper
+      lower=lower
+      pre=pre
+      post=post
+    }}
+  {{/if}}
 </knob>
