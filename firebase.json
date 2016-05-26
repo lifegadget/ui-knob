@@ -1,5 +1,4 @@
 {
-  "firebase": "ui-knob",
   "public": "dist",
   "ignore": [
     "firebase.json",

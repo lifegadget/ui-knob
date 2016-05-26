@@ -11,7 +11,7 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{ui-knob-iterator}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), '>');
 
   // Template block usage:
   this.render(hbs`

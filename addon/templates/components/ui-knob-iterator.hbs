@@ -2,5 +2,9 @@
   id={{this.elementId}}
   class="{{direction}}{{classy class}}" {{action 'onIterate'}}
 >
-  >
+  {{#if hasBlock}}
+    {{yield}}
+  {{else}}
+    >
+  {{/if}}
 </iterator>
