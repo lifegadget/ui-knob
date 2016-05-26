@@ -39,13 +39,31 @@ knob .value-bar {
   flex-direction: row;
   justify-content: center;
   align-items: baseline;
-  width: 100%;
+  width: 125%;
 }
 
 knob .value-bar input {
   display: flex;
   text-align: center;
   flex: 1 0;
+  padding: 6px 6px !important;
+}
+
+knob .input-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.6rem;
+  line-height: 1.5;
+}
+
+knob .inbetween-marker {
+  font-size: 1.8rem;
+  color: lightgrey;
+}
+knob .blur-value {
+  color: darkgrey;
 }
 
 knob iterator {

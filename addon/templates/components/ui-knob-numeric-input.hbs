@@ -4,8 +4,20 @@
   </div>
   <div class="value-bar fill">
     <span class="pre-input" >{{pre}}</span>
-    <span class='input'>
-      {{text-input skin='minimal' value=value size='huge' onBlur=(mut value) align='center' readOnly=readOnly}}
+    <span class='input-area'>
+      {{text-input
+        value=value
+        skin='minimal'
+        align='center'
+        readOnly=readOnly
+        onBlur=(mut value)
+      }}
+      {{#if blurValue}}
+        <span class="blurring">          
+          <span class="inbetween-marker">→</span>
+          <span class="blur-value">{{_blurValue}}</span>
+        </span>
+      {{/if}}
     </span>
     <span class="post-input" >{{post}}</span>
   </div>

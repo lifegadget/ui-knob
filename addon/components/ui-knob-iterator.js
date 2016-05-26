@@ -2,6 +2,13 @@ import Ember from 'ember';
 import layout from '../templates/components/ui-knob-iterator';
 import DDAU from '../mixins/ddau';
 
+const { keys, create } = Object; // jshint ignore:line
+const { RSVP: {Promise, all, race, resolve, defer} } = Ember; // jshint ignore:line
+const { inject: {service} } = Ember; // jshint ignore:line
+const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
+const { get, set, debug } = Ember; // jshint ignore:line
+const a = Ember.A; // jshint ignore:line
+
 const iterator = Ember.Component.extend(DDAU,{
   layout,
   tagName: '',
@@ -9,7 +16,9 @@ const iterator = Ember.Component.extend(DDAU,{
   amount: null, // amount to iterate (note: iterators work on "blur" action)
   min: null,
   max: null,
+  step: null,
   value: null,
+  blurValue: null,
 
   actions: {
     onIterate() {

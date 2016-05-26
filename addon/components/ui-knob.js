@@ -10,16 +10,14 @@ const apiSurface = ['min','max','step','angleOffset','angleArc','stopper','readO
 export default Ember.Component.extend(DDAU, Stylist,{
   layout,
   tagName: '',
+
+  didInsertElement() {
+    this._super(...arguments);
+    this.initiateKnob();
+  },
+
   type: 'text',
   value: 0,
-  _value: computed('value', {
-    set(_, value) {
-      return value;
-    },
-    get() {
-      return this.get('value');
-    }
-  }),
 
   // Behaviour props
   min: 0,
@@ -75,14 +73,6 @@ export default Ember.Component.extend(DDAU, Stylist,{
     this._config = o;
   },
 
-
-  // INITIALISE / ON LOAD
-  // --------------------
-  didInsertElement() {
-    this._super(...arguments);
-    this.initiateKnob();
-  },
-
   // ASYNC EVENTS
   // -------------------
   initiateKnob() {
@@ -97,7 +87,7 @@ export default Ember.Component.extend(DDAU, Stylist,{
   addEventCallbacks(o) {
     // EVENT CALLBACKS
     o.change = function(value) {
-      this.set('_value', value);
+      this.set('_blurValue', value);
       const roundedValue = Math.round(value);
       this.ddau('onDrag', {
         code: 'value-changing',
@@ -106,7 +96,7 @@ export default Ember.Component.extend(DDAU, Stylist,{
       }, roundedValue);
     }.bind(this);
     o.release = function(value) {
-      this.set('_value', value);
+      this.set('_blurValue', null);
       this.ddau('onChange', {
         code: 'value-changed',
         value: value,
