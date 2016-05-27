@@ -25,6 +25,7 @@ export default Ember.Controller.extend({
   post: '',
   leftRight: 0,
   upDown: 0,
+  stopper: true,
 
   actions: {
     showError(hash) {

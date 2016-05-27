@@ -254,5 +254,76 @@
     </div>
   </row>
 
+  <p>
+    <br>
+  </p>
+
+  <h3>Common Patterns</h3>
+  <div class='row'>
+    <div class="col-xs-4">
+      <h4>Dual Semi-Knobs</h4>
+      <br>
+      {{ui-knob
+        class='top-knob'
+        width=300
+        height=300
+        value=topValue
+        angleOffset=272
+        angleArc=176
+        onChange=(mut topValue)
+      }}
+
+      {{ui-knob
+        class='bottom-knob'
+        width=300
+        height=300
+        value=bottomValue
+        angleOffset=92
+        angleArc=176
+        rotation="anticlockwise"
+        onChange=(mut bottomValue)
+      }}
+  </div>
+  <div class="col-xs-4">
+    <h4>Outer and Inner Knobs</h4>
+    <br>
+
+    {{ui-knob
+      class='top-knob'
+      width=300
+      height=300
+      thickness=0.27
+      value=outerValue
+      angleOffset=5
+      angleArc=350
+      displayInput=false
+      backColor='black'
+      plateColor='black'
+      onChange=(mut outerValue)
+    }}
+
+    {{ui-knob
+      class='inner-knob'
+      width=190
+      height=190
+      thickness=0.5
+      value=innerValue
+      angleOffset=5
+      angleArc=350
+      fgColor='#3e824d'
+      backColor='black'
+      plateColor='black'
+      displayInput=false
+      onChange=(mut innerValue)
+    }}
+
+    </div>
+    <div class="col-xs-4">
+      example 3
+
+    </div>
+
+  </div>
+
 </div>
 {{/demo-css}}

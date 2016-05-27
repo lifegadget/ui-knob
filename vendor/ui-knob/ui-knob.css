@@ -14,6 +14,10 @@ svg.ui-input-plate {
   top: 0;
 }
 
+svg.ui-knob-background {
+  z-index: -1;
+}
+
 knob .numeric-value {
   display:flex;
   flex: 0 0 50%;

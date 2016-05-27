@@ -11,9 +11,14 @@ export default Ember.Component.extend(DDAU, Stylist,{
   layout,
   tagName: '',
 
-  didInsertElement() {
+  init() {
     this._super(...arguments);
-    this.initiateKnob();
+    Ember.run.schedule('afterRender', () => {
+      this.initiateKnob();
+      this.syncValue();
+      this.resizeDidHappen(); // get dimensions initialised on load
+      this.resizeListener(); // add a listener for future resize events
+    });
   },
 
   type: 'text',
@@ -44,10 +49,12 @@ export default Ember.Component.extend(DDAU, Stylist,{
   }),
   hasUom: Ember.computed.bool('uom'),
   height: 100,
-  displayInput: false, // the ui-knob's input should ALWAYS be hidden
+  displayInput: true, 
   displayPrevious: true,
   fgColor: '#66CC66',
   bgColor: '#EFEEEE',
+  plateColor: '#fff',
+  backColor: '#fff',
   inputColor: 'black',
   font: 'Arial',
   fontWeight: 'normal',
@@ -73,6 +80,17 @@ export default Ember.Component.extend(DDAU, Stylist,{
     this._config = o;
   },
 
+  // autoSize() {
+  //   const {width, height} = this.getProperties('width', 'height');
+  //   const availableWidth = Ember.$(this.elementId).width();
+  //   const newWidth = width === 'auto' || Ember.typeOf(width) === 'null' ? availableWidth : width;
+  //
+  //   this.set('width', newWidth);
+  //   if(!height) {
+  //     this.set('height', newWidth);
+  //   }
+  // },
+
   // ASYNC EVENTS
   // -------------------
   initiateKnob() {
@@ -80,9 +98,6 @@ export default Ember.Component.extend(DDAU, Stylist,{
     this.addEventCallbacks(options);
     this.rememberOptions(options);
     $(`#input-${this.elementId}`).knob(options);
-    this.syncValue();
-    this.resizeDidHappen(); // get dimensions initialised on load
-    this.resizeListener(); // add a listener for future resize events
   },
   addEventCallbacks(o) {
     // EVENT CALLBACKS

@@ -1,1 +1,12 @@
 @import 'bootstrap-flex';
+
+.bottom-knob {
+  position: relative;
+  top: -300px;
+}
+
+.inner-knob {
+  position: relative;
+  top: -245px;
+  left: 55px;
+}
