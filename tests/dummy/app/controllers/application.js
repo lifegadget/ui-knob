@@ -14,6 +14,6 @@ export default Ember.Controller.extend({
   displayPrevious: true,
   lineCap: 'butt',
   cursor: false,
-  bgColor: '#EFEEEE',
-  fgColor: '#66CC66'
+  unselectedColor: '#EFEEEE',
+  selectedColor: '#66CC66'
 });

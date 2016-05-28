@@ -1,0 +1,19 @@
+<svg
+  id={{elementId}}
+  class="ui-knob-arc"
+  width={{width}}
+  height={{height}}
+>
+  <g transform="translate({{transformSize}},{{transformSize}})">
+    <path
+      d={{arc}}
+      style="stroke: {{unselectedColor}}; fill: {{unselectedColor}}"
+    ></path>
+    <path
+      d={{selectedArc}}
+      class='selected'
+      style="stroke: {{selectedColor}}; fill: {{selectedColor}}"
+    ></path>
+  </g>
+
+</svg>

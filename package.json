@@ -46,8 +46,8 @@
     "ember-try": "0.1.2",
     "loader.js": "^4.0.0",
     "ui-bootstrap": "0.1.0",
-    "ui-button": "^2.0.0-beta.10",
-    "ui-input": "0.9.20"
+    "ui-button": "^2.0.0-beta.11",
+    "ui-input": "0.9.21"
   },
   "keywords": [
     "ember-addon",

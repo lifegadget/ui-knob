@@ -6,9 +6,9 @@
   <h3>Background</h3>
   Anthony Terrien built a very nice and popular jQuery widget called <a href="http://anthonyterrien.com/knob"><prop>jQuery-Knob</prop></a> which this addon wraps around making it easy for Ember developers to join in on the fun.
 
-  <h3>Basic Usage</h3>
-  <row>
-    <widget>
+  <h3>Interactive Demo</h3>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
       {{ui-knob
         value=value
         min=min
@@ -20,151 +20,143 @@
         angleOffset=angleOffset
         angleArc=angleArc
         cursor=cursor
-        stopper=stopper
         displayInput=displayInput
         displayPrevious=displayPrevious
         lineCap=lineCap
         readOnly=readOnly
-        fgColor=fgColor
-        bgColor=bgColor
+        selectedColor=selectedColor
+        unselectedColor=unselectedColor
       }}
-    </widget>
-    <code>
-      {{display-component
-        componentName='ui-knob'
-        value=value
-        min=min
-        max=max
-        step=step
-        width=width
-        height=height
-        thickness=thickness
-        angleOffset=angleOffset
-        angleArc=angleArc
-        cursor=cursor
-        stopper=stopper
-        displayInput=displayInput
-        displayPrevious=displayPrevious
-        lineCap=lineCap
-        readOnly=readOnly
-        fgColor=fgColor
-        bgColor=bgColor
-     }}
-    </code>
-    <description>
-      Basic usage includes setting properties such as:
-      <br/>
-      <controls>
-      <control>
-        <span class='name'>min:</span>
-        <span>
-          {{numeric-input value=min step=10 skin='flat' size='small' defaultValue=0 onChange=(mut min)}}
-        </span>
-        <span class='name'>max:</span>
-        <span>
-          {{numeric-input value=max step=10 skin='flat' size='small' defaultValue=100}}
-        </span>
-        <span class='name'>step:</span>
-        <span>
-          {{text-input value=step skin='flat' size='small' defaultValue=100}}
-        </span>
-      </control>
-      <control>
-        <span class='name'>thickness:</span>
-        <span>
-          {{text-input value=thickness skin='flat' size='small' min=0 max=1 step=0.1}} &nbsp;
-        </span>
-      </control>
-      <control>
-        <span class='name'>angleOffset:</span>
-        <span>
-          {{text-input value=angleOffset skin='flat' size='small' onBlur=(mut angleOffset)}}
-        </span>
-        <span class='name'>angleArc:</span>
-        <span>
-          {{text-input value=angleArc skin='flat' size='small' onBlur=(mut angleArc)}}
-        </span>
-      </control>
-      <control>
-        <span class='name'>stopper:</span>
-        <span>
-          {{ui-toggle-button
-            size='small'
-            outline=true
-            on='true'
-            false='false'
-            value=stopper
-            onToggle=(mut stopper)
-          }}
-        </span>
-        <span class='name'>display input:</span>
-        <span>
-          {{ui-toggle-button
-            size='small'
-            outline=true
-            on='show'
-            false='hide'
-            value=displayInput
-            onToggle=(mut displayInput)
-          }}
-        </span>
-        <span class='name'>display previous:</span>
-        <span>
-          {{ui-toggle-button
-            size='small'
-            outline=true
-            on='show'
-            false='hide'
-            value=displayPrevious
-            onToggle=(mut displayPrevious)
-          }}
-        </span>
-      </control>
-      <control>
-        <span class='name'>line cap:</span>
-        <span>
-          {{ui-buttons
-            buttons='butt,round'
-            cardinality='1:1'
-            value=lineCap
-            onChange=(mut lineCap)
-          }}
-        </span>
-        <span class='name'>read only:</span>
-        <span>
-          {{ui-toggle-button
-            on='true'
-            false='false'
-            value=readOnly
-            onToggle=(mut readOnly)
-          }}
-        </span>
-      </control>
-      <control>
-        <span class='name'>cursor</span>
-        <span>
-          {{ui-buttons
-            buttons='off:::false,1,3,5,10,25'
-            cardinality='1:1'
-            value=cursor
-            onChange=(mut cursor)
-          }}
-        </span>
-      </control>
-      <control>
-        <span class='name'>fgColor:</span>
-        <span>
-          {{text-input value=fgColor skin='flat' size='small' defaultValue='#66CC66' onBlur=(mut fgColor)}}
-        </span>
-        <span class='name'>bgColor:</span>
-        <span>
-          {{text-input value=bgColor skin='flat' size='small' defaultValue='#EFEEEE' onBlur=(mut bgColor)}}
-        </span>
-      </control>
-      </controls>
-
-    </description>
-  </row>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <code class='handlebars'>
+        {{display-component
+          componentName='ui-knob'
+          value=value
+          min=min
+          max=max
+          step=step
+          width=width
+          height=height
+          thickness=thickness
+          angleOffset=angleOffset
+          angleArc=angleArc
+          cursor=cursor
+          displayInput=displayInput
+          displayPrevious=displayPrevious
+          lineCap=lineCap
+          readOnly=readOnly
+          selectedColor=selectedColor
+          unselectedColor=unselectedColor
+       }}
+      </code>
+    </div>
+    <div class="col-xs-12 col-md-4">
+        <controls>
+        <control>
+          <span class='name'>min:</span>
+          <span>
+            {{text-input value=min step=10 skin='flat' size='small' defaultValue=0 onChange=(mut min)}}
+          </span>
+          <span class='name'>max:</span>
+          <span>
+            {{text-input
+              value=max
+              step=10
+              skin='flat'
+              size='small'
+              onBlur=(mut max)
+            }}
+          </span>
+          <span class='name'>step:</span>
+          <span>
+            {{text-input value=step skin='flat' size='small' defaultValue=100}}
+          </span>
+        </control>
+        <control>
+          <span class='name'>thickness:</span>
+          <span>
+            {{text-input value=thickness skin='flat' size='small' min=0 max=1 step=0.1}} &nbsp;
+          </span>
+        </control>
+        <control>
+          <span class='name'>angleOffset:</span>
+          <span>
+            {{text-input value=angleOffset skin='flat' size='small' onBlur=(mut angleOffset)}}
+          </span>
+          <span class='name'>angleArc:</span>
+          <span>
+            {{text-input value=angleArc skin='flat' size='small' onBlur=(mut angleArc)}}
+          </span>
+        </control>
+        <control>
+          <span class='name'>display input:</span>
+          <span>
+            {{ui-toggle-button
+              size='small'
+              outline=true
+              on='show'
+              false='hide'
+              value=displayInput
+              onToggle=(mut displayInput)
+            }}
+          </span>
+          <span class='name'>display previous:</span>
+          <span>
+            {{ui-toggle-button
+              size='small'
+              outline=true
+              on='show'
+              false='hide'
+              value=displayPrevious
+              onToggle=(mut displayPrevious)
+            }}
+          </span>
+        </control>
+        <control>
+          <span class='name'>line cap:</span>
+          <span>
+            {{ui-buttons
+              buttons='butt,round'
+              cardinality='1:1'
+              value=lineCap
+              onChange=(mut lineCap)
+            }}
+          </span>
+          <span class='name'>read only:</span>
+          <span>
+            {{ui-toggle-button
+              on='true'
+              false='false'
+              value=readOnly
+              onToggle=(mut readOnly)
+            }}
+          </span>
+        </control>
+        <control>
+          <span class='name'>cursor</span>
+          <span>
+            {{ui-buttons
+              buttons='off:::false,1,3,5,10,25'
+              cardinality='1:1'
+              value=cursor
+              onChange=(mut cursor)
+            }}
+          </span>
+        </control>
+        <control>
+          <span class='name'>selectedColor:</span>
+          <span>
+            {{text-input value=selectedColor skin='flat' size='small' defaultValue='#66CC66' onBlur=(mut selectedColor)}}
+          </span>
+          <span class='name'>unselectedColor:</span>
+          <span>
+            {{text-input value=unselectedColor skin='flat' size='small' defaultValue='#EFEEEE' onBlur=(mut unselectedColor)}}
+          </span>
+        </control>
+        </controls>
+    </div>
+  </div> {{! End ROW }}
 
 </div>
 {{/demo-css}}

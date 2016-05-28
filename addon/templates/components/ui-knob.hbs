@@ -1,15 +1,29 @@
-<knob id="{{elementId}}" class='{{if class (concat class ' ')}}ui-knob' style={{stylist}}>
+<knob
+  id="{{elementId}}"
+  class='{{if class (concat class ' ')}}ui-knob{{if isFocused ' focused'}}'
+  style={{stylist}}
+  tabindex=0
+  onfocus={{action 'onFocus' true}}
+  onblur={{action 'onFocus' false}}
+>
 
   {{yield}}
 
   <relativity-frame>
-    <canvas
-      id="knob-{{elementId}}"
-      role="input"
-      width="400"
-      height="400"
-    ></canvas>
-    {{text-input value=value onBlur=(mut value)}}
+    {{ui-knob-arc
+      width=width
+      height=height
+      value=value
+      cursor=cursor
+      min=min
+      max=max
+      angleArc=angleArc
+      angleOffset=angleOffset
+
+      selectedColor=selectedColor
+      unselectedColor=unselectedColor
+    }}
+
   </relativity-frame>
 
 </knob>
