@@ -6,24 +6,28 @@
   onfocus={{action 'onFocus' true}}
   onblur={{action 'onFocus' false}}
 >
-
   {{yield}}
+  {{#ui-knob-keyboard
+    value=value
+    upDown=upDown
+    leftRight=leftRight
+    onChange=(action 'onChange')
+    as |kb|
+  }}
+      {{ui-knob-arc
+        width=width
+        height=height
+        value=value
+        cursor=cursor
+        min=min
+        max=max
+        angleArc=angleArc
+        angleOffset=angleOffset
 
-  <relativity-frame>
-    {{ui-knob-arc
-      width=width
-      height=height
-      value=value
-      cursor=cursor
-      min=min
-      max=max
-      angleArc=angleArc
-      angleOffset=angleOffset
+        isFocused=isFocused
+        selectedColor=selectedColor
+        unselectedColor=unselectedColor
+      }}
 
-      selectedColor=selectedColor
-      unselectedColor=unselectedColor
-    }}
-
-  </relativity-frame>
-
+  {{/ui-knob-keyboard}}
 </knob>
