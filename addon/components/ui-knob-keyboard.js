@@ -26,7 +26,7 @@ export default Ember.Component.extend(EKMixin, DDAU, {
   rightArrow: Ember.on(keyDown('ArrowRight'), function() {
     const {leftRight} = this.getProperties('leftRight');
     if(leftRight) {
-      const newValue = Number(this.get('value')) + leftRight;
+      const newValue = Number(this.get('value')) + Number(leftRight);
       this.ddau('onChange', {
         code: 'keyboard-increment-right',
         value: newValue,
@@ -50,7 +50,7 @@ export default Ember.Component.extend(EKMixin, DDAU, {
   downArrow: Ember.on(keyDown('ArrowDown'), function() {
     const {upDown} = this.getProperties('upDown');
     if(upDown) {
-      const newValue = Number(this.get('value')) + upDown;
+      const newValue = Number(this.get('value')) + Number(upDown);
       this.ddau('onChange', {
         code: 'keyboard-increment-up',
         value: newValue,

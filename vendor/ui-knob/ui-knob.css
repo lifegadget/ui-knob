@@ -2,3 +2,8 @@
   display: flex;
   flex: 1 0;
 }
+
+knob .selected {
+  stroke: #66CC66;
+  fill: #66CC66;
+}

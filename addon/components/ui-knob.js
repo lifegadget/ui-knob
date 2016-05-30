@@ -86,7 +86,7 @@ export default Ember.Component.extend(Stylist, DDAU, {
           value: min,
           oldValue: hash.oldValue,
           rejectedValue: hash.value
-        });
+        }, min);
       }
       else if(hash.value > max) {
         const code = 'max-value-breached';
@@ -98,10 +98,10 @@ export default Ember.Component.extend(Stylist, DDAU, {
         }, code);
         this.ddau('onChange', {
           code: 'keep-to-maximum-value',
-          value: min,
+          value: max,
           oldValue: hash.oldValue,
           rejectedValue: hash.value
-        });
+        }, max);
       }
       else {
         this.ddau('onChange', hash, hash.value);

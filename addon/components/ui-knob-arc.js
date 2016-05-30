@@ -33,13 +33,11 @@ const uiArc = Ember.Component.extend({
   _startAngle: Ember.computed('min', 'max', 'angleOffset', 'angleArc', function() {
     const angleOffset = Number(this.get('angleOffset'));
     const angleArc = Number(this.get('angleArc'));
-    console.log('startAngle:', angleOffset + angleArc > 360 ? -1 * (360 - angleOffset) :  angleOffset);
     return angleOffset + angleArc > 360 ? toRadians(360 - angleArc) :  toRadians(angleOffset);
   }),
   _endAngle: computed('min', 'max', 'angleOffset', 'angleArc', function() {
     const angleOffset = Number(this.get('angleOffset'));
     const angleArc = Number(this.get('angleArc'));
-    console.log('endAngle calc: ', angleOffset + angleArc > 360 ? angleOffset - (360 - angleArc) : angleOffset + angleArc);
 
     return angleOffset + angleArc > 360 ? toRadians(angleOffset - (360 - angleArc)) : toRadians(angleOffset + angleArc);
   }),
@@ -54,7 +52,6 @@ const uiArc = Ember.Component.extend({
     const {min, max, value, clockwise, _startAngle, _endAngle} = this.getProperties('min', 'max', 'value', 'clockwise', '_startAngle', '_endAngle');
     const directionalDomain = clockwise ? [min, max] : [max, min];
     const scalar = scaleLinear().domain(directionalDomain).range([_startAngle, _endAngle]);
-    console.log(`in value computation of ${value} start/end angles are: ${_startAngle}, ${_endAngle}. This results in a computed angle of: ${scalar(value)}`);
 
     return scalar;
   }),
@@ -70,7 +67,7 @@ const uiArc = Ember.Component.extend({
     const knob = arc()
       .innerRadius( 110 )
       .outerRadius( 150 )
-      .cornerRadius( 5 )
+      .cornerRadius( 2 )
       .startAngle( _startAngle )
       .endAngle( _endAngle );
 
@@ -84,7 +81,7 @@ const uiArc = Ember.Component.extend({
     const selected = arc()
       .innerRadius( 110 )
       .outerRadius( 150 )
-      .cornerRadius( 0 )
+      .cornerRadius( 2 )
       .startAngle( _startAngle + scalar(value - 1.25) )
       .endAngle( _startAngle + scalar(value - 0.25) );
 
