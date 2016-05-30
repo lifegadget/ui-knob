@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
 
   min: 0,
   max: 100,
+  step: 1,
   height: 300,
   width:300,
   thickness: 0.3,

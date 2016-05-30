@@ -16,10 +16,6 @@ const toDegrees = function(radians) {
   return radians * 180 / Math.PI;
 };
 
-const XOR = function(a,b) {
-  return ( a ? 1 : 0 ) ^ ( b ? 1 : 0 );
-};
-
 const uiArc = Ember.Component.extend({
   layout,
   tagName: '',
@@ -30,45 +26,43 @@ const uiArc = Ember.Component.extend({
     });
   },
 
-  min: null,
-  max: null,
-  angleOffset: null,
-  angleArc: null,
-  _startAngle: Ember.computed('angleOffset', function() {
-    const angleOffset = Number(this.get('angleOffset'));
-
-    return angleOffset;
-  }),
-  _endAngle: computed('angleOffset', 'angleArc', function() {
+  min: 0,
+  max: 10,
+  angleOffset: 0,
+  angleArc: 360,
+  _startAngle: Ember.computed('min', 'max', 'angleOffset', 'angleArc', function() {
     const angleOffset = Number(this.get('angleOffset'));
     const angleArc = Number(this.get('angleArc'));
-    console.log('endAngle calc: ', angleOffset, angleArc, angleOffset + angleArc > 360 ? angleOffset - (360 - angleArc) : angleOffset + angleArc);
-
-    return angleOffset + angleArc > 360 ? angleOffset - (360 - angleArc) : angleOffset + angleArc;
+    console.log('startAngle:', angleOffset + angleArc > 360 ? -1 * (360 - angleOffset) :  angleOffset);
+    return angleOffset + angleArc > 360 ? toRadians(360 - angleArc) :  toRadians(angleOffset);
   }),
-  /**
-   * flip
-   *
-   * in cases where angleOffset + angleArc > 360 we must flip the circle (vert & horz)
-   * to allow for the crossing of the "0 degree / 12 o'clock" mark.
-   */
-  _flip: computed('angleOffset', 'angleArc', function() {
-    return Number(this.get('angleOffset')) + Number(this.get('angleArc')) > 360;
+  _endAngle: computed('min', 'max', 'angleOffset', 'angleArc', function() {
+    const angleOffset = Number(this.get('angleOffset'));
+    const angleArc = Number(this.get('angleArc'));
+    console.log('endAngle calc: ', angleOffset + angleArc > 360 ? angleOffset - (360 - angleArc) : angleOffset + angleArc);
+
+    return angleOffset + angleArc > 360 ? toRadians(angleOffset - (360 - angleArc)) : toRadians(angleOffset + angleArc);
   }),
   clockwise: true,
 
   value: null,
   /**
-   * Responsible for mapping input domain to a degree-based range. Also accounts for the
-   * "flipped" state In the flipped state where the directionality needs to be reversed
+   * Responsible for mapping input domain to a degree-based range. This also means including negative degrees
+   * when the range crosses the 0 degree / "12 oclock" position.
    */
-  _value: computed('value', 'min', 'max', 'angleArc', 'angleOffset', function() {
-    const {min, max, angleOffset, angleArc, value, _flip, clockwise} = this.getProperties('min', 'max', 'value', 'angleOffset', 'angleArc', '_flip', 'clockwise');
-    const direction = XOR(clockwise, _flip);
-    const directionalDomain = direction ? [min, max] : [max, min];
-    console.log('direction: ', direction, directionalDomain);
-    const scalar = scaleLinear().domain(directionalDomain).range([0, angleArc || 360 - (angleOffset || 0)]);
+  scalar: computed('value', 'min', 'max', '_startAngle', '_endAngle', 'clockwise', function() {
+    const {min, max, value, clockwise, _startAngle, _endAngle} = this.getProperties('min', 'max', 'value', 'clockwise', '_startAngle', '_endAngle');
+    const directionalDomain = clockwise ? [min, max] : [max, min];
+    const scalar = scaleLinear().domain(directionalDomain).range([_startAngle, _endAngle]);
+    console.log(`in value computation of ${value} start/end angles are: ${_startAngle}, ${_endAngle}. This results in a computed angle of: ${scalar(value)}`);
 
+    return scalar;
+  }),
+  /**
+   * Takes inputted value and maps to appropriate radian domain value using scalar
+   */
+  _value: computed('value','scalar', function() {
+    const {scalar, value} = this.getProperties('scalar', 'value');
     return scalar(value);
   }),
   arc: computed('_startAngle', '_endAngle', function() {
@@ -77,23 +71,22 @@ const uiArc = Ember.Component.extend({
       .innerRadius( 110 )
       .outerRadius( 150 )
       .cornerRadius( 5 )
-      .startAngle( toRadians(_startAngle) )
-      .endAngle( toRadians(_endAngle) );
+      .startAngle( _startAngle )
+      .endAngle( _endAngle );
 
       return knob();
   }),
 
 
-  selectedArc: computed('_value','angleOffset', 'angleArc', function() {
-    const {_value, _startAngle} = this.getProperties('_value', '_startAngle');
+  selectedArc: computed('value', '_startAngle', '_endAngle', function() {
+    const {value, _startAngle, scalar} = this.getProperties('value', '_startAngle', 'scalar');
+
     const selected = arc()
       .innerRadius( 110 )
       .outerRadius( 150 )
       .cornerRadius( 0 )
-      .startAngle( toRadians(_startAngle + _value - 5) )
-      .endAngle( toRadians(_startAngle + _value + 5) );
-
-    console.log(`selectedArc:: val: ${_value}, `, selected());
+      .startAngle( _startAngle + scalar(value - 1.25) )
+      .endAngle( _startAngle + scalar(value - 0.25) );
 
     return selected();
   }),

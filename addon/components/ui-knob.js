@@ -48,8 +48,20 @@ export default Ember.Component.extend(Stylist, DDAU, {
   unselectedColor: '#EFEEEE',
   inputColor: 'black',
 
-  leftRight: 1,
-  upDown: 10,
+  /**
+   * By default leftRight is equal to "step" which is often appropriate
+   * but users may override this to any explicit value they want
+   */
+  leftRight: computed('step', function() {
+    return this.get('step') || 1;
+  }),
+  /**
+   * By default the upDown incrementors will move by 10% of the total range of the max-min
+   * range but users may override this to any explicit value they want
+   */
+  upDown: computed('min','max', function() {
+    return (this.get('max') - this.get('min')) / 10;
+  }),
 
   font: 'Arial',
   fontWeight: 'normal',
