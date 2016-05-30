@@ -22,12 +22,12 @@ knob .selected-padding {
 }
 
 knob .unselected {
-  stroke: #EFEEEE;
-  fill: #EFEEEE;
-  opacity: 1;
+  stroke: #f5f0f0;
+  fill: #f4f0f0;
   cursor: default;
 }
 
 knob.focused .unselected {
-  opacity: 0.8;
+  stroke: #d5d5d5;
+  fill: #EFEEEE;
 }

@@ -68,6 +68,14 @@ const uiArc = Ember.Component.extend({
     return angleOffset + angleArc > 360 ? toRadians(angleOffset - (360 - angleArc)) : toRadians(angleOffset + angleArc);
   }),
   clockwise: true,
+  /**
+   * Evaluates thickness as either a fixed number or percentage value
+   */
+   thickness: 40,
+  _thickness: computed('thickness', 'width', function() {
+    const {thickness, width} = this.getProperties('thickness', 'width');
+    return thickness < 1 ? thickness * width : thickness;
+  }),
   // for all colors, null defers to CSS values
   selectedColor: null,
   unselectedColor: null,
@@ -111,7 +119,7 @@ const uiArc = Ember.Component.extend({
    * when the range crosses the 0 degree / "12 oclock" position.
    */
   scalar: computed('value', 'min', 'max', '_startAngle', '_endAngle', 'clockwise', function() {
-    const {min, max, value, clockwise, _startAngle, _endAngle} = this.getProperties('min', 'max', 'value', 'clockwise', '_startAngle', '_endAngle');
+    const {min, max, clockwise, _startAngle, _endAngle} = this.getProperties('min', 'max', 'clockwise', '_startAngle', '_endAngle');
     const directionalDomain = clockwise ? [min, max] : [max, min];
     const scalar = scaleLinear().domain(directionalDomain).range([_startAngle, _endAngle]);
 

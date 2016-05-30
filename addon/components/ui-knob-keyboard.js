@@ -6,7 +6,7 @@ import DDAU from '../mixins/ddau';
 
 export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   layout,
-  tagName: 'event-listener',
+  tagName: 'event-listeners',
   recognizers: 'swipe',
 
   init() {
@@ -44,9 +44,9 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   },
 
   _leftRight(e, code) {
-    const {leftRight} = this.getProperties('leftRight');
+    const {leftRight, isFocused} = this.getProperties('leftRight', 'isFocused');
     const inversion = code.substr(-5) === 'right' ? 1 : -1;
-    if(leftRight) {
+    if(leftRight && isFocused) {
       e.preventDefault();
       const newValue = Number(this.get('value')) + ( inversion * Number(leftRight) );
       this.ddau('onChange', {
@@ -58,10 +58,9 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   },
 
   _upDown(e, code) {
-    const {upDown} = this.getProperties('upDown');
+    const {upDown, isFocused} = this.getProperties('upDown', 'isFocused');
     const inversion = code.substr(-4) === 'down' ? 1 : -1;
-    console.log('inversion: ', inversion);
-    if(upDown) {
+    if(upDown && isFocused) {
       e.preventDefault();
       const newValue = Number(this.get('value')) + ( inversion * Number(upDown) );
       this.ddau('onChange', {
