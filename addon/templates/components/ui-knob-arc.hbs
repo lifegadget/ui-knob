@@ -5,15 +5,17 @@
   height={{height}}
 >
   <g
+    class='arcs'
     transform="translate({{transformSize}},{{transformSize}}){{if _flip ' scale(-1, -1)'}}"
   >
     <path
       d={{arc}}
-  style="stroke: {{unselectedColor}}; fill: {{unselectedColor}}; opacity: {{if isFocused '1;' '0.8;'}}  "
+      class='unselected'
+      style="stroke: {{unselectedColor}}; fill: {{unselectedColor}};"
     ></path>
     <path
-      d={{selectedArc}}
       class='selected'
+      d={{selectedArc}}
       style="stroke: {{selectedColor}}; fill: {{selectedColor}};"
     ></path>
   </g>

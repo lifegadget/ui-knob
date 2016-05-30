@@ -1,13 +1,10 @@
 import Ember from 'ember';
-import { arc, pie } from 'd3-shape';
 
 const { keys, create } = Object; // jshint ignore:line
 const {computed, observer, $, A, run, on, typeOf, debug, defineProperty, get, set, inject, isEmpty} = Ember;  // jshint ignore:line
 import layout from '../templates/components/ui-knob';
 import Stylist from 'ember-cli-stylist/mixins/shared-stylist';
 import DDAU from '../mixins/ddau';
-
-const apiSurface = ['min','max','step','angleOffset','angleArc','stopper','readOnly','rotation','cursor','thickness','lineCap','width','height','dataWidth', 'displayInput','displayPrevious','fgColor','bgColor','inputColor','font','fontWeight','skin'];
 
 export default Ember.Component.extend(Stylist, DDAU, {
   layout,

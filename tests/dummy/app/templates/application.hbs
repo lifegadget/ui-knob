@@ -186,5 +186,61 @@
     </div>
   </div> {{! End ROW }}
 
+  <h3>Topics</h3>
+  <h4>Focus</h4>
+  <div class="row">
+    <div class="explanation col-xs-9">
+      <p>
+        This component serves as an input and therefore is "focusable" like any other HTML input control. The browser's default styling for this though is an ugly blue box which may work for a rectangular input but not a circular one. Therefore the knob's <code>outline</code> CSS property has been set to "none" and in its place we programatically ensure that the {{ui-label '.focused'}} class is added to the knob when it is focused.
+      </p>
+      <p>
+        Furthermore, to make sure there is a visual indication "out of the box" we have set the "unselected" region of the knob to have an opacity of 0.8 which moves to 1.0 when in focus.
+      </p>
+    </div>
+    <div class="demo col-xs-3">
+      {{ui-knob width=50 height=50 value=2 min=1 max=10}}
+      {{ui-knob width=50 height=50 value=5 min=1 max=10}}
+      {{ui-knob width=50 height=50 value=10 min=1 max=10}}
+    </div>
+  </div>
+  <h4>Colors</h4>
+  <div class="row">
+    <div class="explanation col-xs-9">
+      <p>
+        The preferred and default method of setting colors on this component is setting the CSS property values. So let's look at the various functional targets and their their CSS selectors are:
+      </p>
+      <table class='table'>
+        <tr>
+          <td>{{ui-label 'knob .unselected'}}</td>
+          <td>
+            this represents the arc which is defined by the <code>angleArc</code> and <code>angleOffset</code> properties.
+          </td>
+        </tr>
+        <tr>
+          <td>{{ui-label 'knob .selected'}}</td>
+          <td>this is the section which represents the range (in degrees of the arc) which represent the currently set value</td>
+        </tr>
+        <tr>
+          <td>{{ui-label 'knob .selected-padding'}}</td>
+          <td>
+            If padding is turned on (by setting the <code>displayPadding</code> property) then both sides of the selected value will be highlighted.
+          </td>
+        </tr>
+        <tr>
+          <td>{{ui-label 'knob .background-color'}}</td>
+          <td>
+            Determines the <i>circular</i> background color. By default this is white and would not be visible on many websites. Also, if you change the <code>outline</code> property on the knob you're able to extend the diameter of the background of the knob beyond the 
+          </td>
+        </tr>
+      </table>
+      <p>
+        Please note that all of the default selectors set both the <code>stroke</code> and <code>fill</code> properties of SVG.
+      </p>
+
+    </div>
+    <div class="demo col-xs-3">
+
+    </div>
+  </div>
 </div>
 {{/demo-css}}

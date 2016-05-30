@@ -1,62 +1,77 @@
 import Ember from 'ember';
 import layout from '../templates/components/ui-knob-keyboard';
+import RecognizerMixin from 'ember-gestures/mixins/recognizers';
 import { EKMixin, keyDown } from 'ember-keyboard';
 import DDAU from '../mixins/ddau';
 
-export default Ember.Component.extend(EKMixin, DDAU, {
+export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   layout,
   tagName: 'event-listener',
+  recognizers: 'swipe',
 
   init() {
     this._super(...arguments);
     this.set('keyboardActivated', true);
   },
-  leftArrow: Ember.on(keyDown('ArrowLeft'), function() {
+
+  leftArrow: Ember.on(keyDown('ArrowLeft'), function(e) {
+    this._leftRight(e, 'keyboard-increment-left');
+  }),
+
+  rightArrow: Ember.on(keyDown('ArrowRight'), function(e) {
+    this._leftRight(e, 'keyboard-increment-right');
+  }),
+
+  upArrow: Ember.on(keyDown('ArrowUp'), function(e) {
+    this._upDown(e, 'keyboard-increment-up');
+  }),
+
+  downArrow: Ember.on(keyDown('ArrowDown'), function(e) {
+    this._upDown(e, 'keyboard-increment-down');
+  }),
+
+  swipeLeft(e) {
+    this._leftRight(e, 'swipe-left');
+  },
+  swipeRight(e) {
+    this._leftRight(e, 'swipe-right');
+  },
+  swipeUp(e) {
+    this._upDown(e, 'swipe-up');
+  },
+  swipeDown(e) {
+    this._upDown(e, 'swipe-down');
+  },
+
+  _leftRight(e, code) {
     const {leftRight} = this.getProperties('leftRight');
+    const inversion = code.substr(-5) === 'right' ? 1 : -1;
+    console.log('inversion: ', inversion);
     if(leftRight) {
-      const newValue = Number(this.get('value')) - leftRight;
+      e.preventDefault();
+      const newValue = Number(this.get('value')) + ( inversion * Number(leftRight) );
       this.ddau('onChange', {
-        code: 'keyboard-increment-left',
+        code: code,
         value: newValue,
         oldValue: Number(this.get('value'))
       }, newValue);
     }
-  }),
+  },
 
-  rightArrow: Ember.on(keyDown('ArrowRight'), function() {
-    const {leftRight} = this.getProperties('leftRight');
-    if(leftRight) {
-      const newValue = Number(this.get('value')) + Number(leftRight);
-      this.ddau('onChange', {
-        code: 'keyboard-increment-right',
-        value: newValue,
-        oldValue: Number(this.get('value'))
-      }, newValue);
-    }
-  }),
-
-  upArrow: Ember.on(keyDown('ArrowUp'), function() {
+  _upDown(e, code) {
     const {upDown} = this.getProperties('upDown');
+    const inversion = code.substr(-4) === 'down' ? 1 : -1;
+    console.log('inversion: ', inversion);
     if(upDown) {
-      const newValue = Number(this.get('value')) - upDown;
+      e.preventDefault();
+      const newValue = Number(this.get('value')) + ( inversion * Number(upDown) );
       this.ddau('onChange', {
-        code: 'keyboard-increment-up',
+        code: code,
         value: newValue,
         oldValue: Number(this.get('value'))
       }, newValue);
     }
-  }),
+  },
 
-  downArrow: Ember.on(keyDown('ArrowDown'), function() {
-    const {upDown} = this.getProperties('upDown');
-    if(upDown) {
-      const newValue = Number(this.get('value')) + Number(upDown);
-      this.ddau('onChange', {
-        code: 'keyboard-increment-up',
-        value: newValue,
-        oldValue: Number(this.get('value'))
-      }, newValue);
-    }
-  }),
 
 });

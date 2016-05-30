@@ -1,9 +1,33 @@
-.ui-knob {
+knob {
   display: flex;
   flex: 1 0;
+  outline: none;
 }
 
 knob .selected {
-  stroke: #66CC66;
-  fill: #66CC66;
+  stroke: #7cb96c;
+  fill: #7cb96c;
+}
+
+knob .selected {
+  stroke: #9ee88b;
+  fill: #9ee88b;
+  cursor: pointer;
+}
+
+knob .selected-padding {
+  stroke: #aaff94;
+  fill: #aaff94;
+  opacity: 0.65;
+}
+
+knob .unselected {
+  stroke: #EFEEEE;
+  fill: #EFEEEE;
+  opacity: 1;
+  cursor: default;
+}
+
+knob.focused .unselected {
+  opacity: 0.8;
 }

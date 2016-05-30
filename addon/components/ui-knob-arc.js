@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import layout from '../templates/components/ui-knob-arc';
+import { drag } from 'd3-drag';
 import { arc } from 'd3-shape';
+import { select } from 'd3-selection';
 import { scaleLinear } from 'd3-scale';
 
 const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
@@ -23,7 +25,25 @@ const uiArc = Ember.Component.extend({
     this._super(...arguments);
     Ember.run.schedule('afterRender', () => {
       this.svg = document.getElementById(this.elementId);
+      this.addDragListeners(`#${this.elementId} .unselected`);
     });
+  },
+
+  addDragListeners(target) {
+    drag.container = this;
+    select(target).call(drag().on('start', this._dragStart));
+    select(target).call(drag().on('drag', this._dragging));
+    select(target).call(drag().on('end', this._dragEnd));
+  },
+
+  _dragStart(e) {
+    console.log('drag starting', e);
+  },
+  _dragging(e) {
+    console.log('dragging', e);
+  },
+  _dragEnd(e) {
+    console.log('drag ending', e);
   },
 
   min: 0,
@@ -42,6 +62,13 @@ const uiArc = Ember.Component.extend({
     return angleOffset + angleArc > 360 ? toRadians(angleOffset - (360 - angleArc)) : toRadians(angleOffset + angleArc);
   }),
   clockwise: true,
+  // for all colors, null defers to CSS values
+  selectedColor: null,
+  unselectedColor: null,
+  backgroundColor: null,
+  _knobSelectedStyle: computed('selectedColor', function() {
+
+  }),
 
   value: null,
   /**
@@ -88,9 +115,19 @@ const uiArc = Ember.Component.extend({
     return selected();
   }),
 
+  startedDrag(e) {
+    console.log('started drag', e);
+  },
+
   transformSize: Ember.computed('width', function() {
     return this.get('width') / 2;
-  })
+  }),
+
+  actions: {
+    startSelectionDrag(e) {
+      console.log('starting drag', e);
+    }
+  }
 });
 
 

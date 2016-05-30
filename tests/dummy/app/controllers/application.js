@@ -15,12 +15,9 @@ export default Ember.Controller.extend({
   displayPrevious: true,
   lineCap: 'butt',
   cursor: false,
-  unselectedColor: '#EFEEEE',
-  selectedColor: '#66CC66',
-
   actions: {
     onError(hash) {
-      console.error(hash);
+      console.warn('onError action was fired', hash);
     }
   }
 });
