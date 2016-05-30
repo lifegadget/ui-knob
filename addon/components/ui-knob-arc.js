@@ -4,10 +4,11 @@ import { drag } from 'd3-drag';
 import { arc } from 'd3-shape';
 import { select } from 'd3-selection';
 import { scaleLinear } from 'd3-scale';
+import { transition } from 'd3-transition';
 
 const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
 const { get, set, debug } = Ember; // jshint ignore:line
-
+const htmlSafe = Ember.String.htmlSafe;
 
 // Converts from degrees to radians.
 const toRadians = function(degrees) {
@@ -26,6 +27,7 @@ const uiArc = Ember.Component.extend({
     Ember.run.schedule('afterRender', () => {
       this.svg = document.getElementById(this.elementId);
       this.addDragListeners(`#${this.elementId} .unselected`);
+      this.addTransition(`#${this.elementId} .selected`);
     });
   },
 
@@ -44,6 +46,10 @@ const uiArc = Ember.Component.extend({
   },
   _dragEnd(e) {
     console.log('drag ending', e);
+  },
+
+  addTransition(target) {
+    transition().select(target);
   },
 
   min: 0,
@@ -67,8 +73,37 @@ const uiArc = Ember.Component.extend({
   unselectedColor: null,
   backgroundColor: null,
   _knobSelectedStyle: computed('selectedColor', function() {
-
+    return this._strokeAndFill(this.get('selectedColor'));
   }),
+  _knobUnselectedStyle: computed('unselectedColor', function() {
+    return this._strokeAndFill(this.get('unselectedColor'));
+  }),
+  _strokeAndFill(value) {
+    let props;
+    if (value) {
+      switch(typeOf(value)) {
+        case 'string':
+          props = {
+            stroke: value.split(',')[0],
+            fill: value.split(',')[value.split(',').length - 1]
+          };
+          break;
+        case 'function':
+          props = value(this.get('value'));
+          break;
+        case 'object':
+          props = value;
+          break;
+        default:
+          debug('ui-knob-arc: unknown property value for determining stroke and fill:', value);
+          props = {stroke: 'inherit', fill: 'inherit'};
+      }
+
+      return htmlSafe(`stroke: ${props.stroke}; fill: ${props.fill};`);
+    } else {
+      return '';
+    }
+  },
 
   value: null,
   /**
@@ -90,10 +125,10 @@ const uiArc = Ember.Component.extend({
     return scalar(value);
   }),
   arc: computed('_startAngle', '_endAngle', function() {
-    const {_startAngle, _endAngle} = this.getProperties('_startAngle', '_endAngle');
+    const {_startAngle, _endAngle, width, thickness} = this.getProperties('_startAngle', '_endAngle', 'width', 'thickness');
     const knob = arc()
-      .innerRadius( 110 )
-      .outerRadius( 150 )
+      .innerRadius( (width / 2) - thickness )
+      .outerRadius( width / 2 )
       .cornerRadius( 2 )
       .startAngle( _startAngle )
       .endAngle( _endAngle );
@@ -103,11 +138,11 @@ const uiArc = Ember.Component.extend({
 
 
   selectedArc: computed('value', '_startAngle', '_endAngle', function() {
-    const {value, _startAngle, scalar} = this.getProperties('value', '_startAngle', 'scalar');
+    const {value, _startAngle, scalar, width, thickness} = this.getProperties('value', '_startAngle', 'scalar', 'width', 'thickness');
 
     const selected = arc()
-      .innerRadius( 110 )
-      .outerRadius( 150 )
+      .innerRadius( (width / 2) - thickness )
+      .outerRadius( width / 2 )
       .cornerRadius( 2 )
       .startAngle( _startAngle + scalar(value - 1.25) )
       .endAngle( _startAngle + scalar(value - 0.25) );

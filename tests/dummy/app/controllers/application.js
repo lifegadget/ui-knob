@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   step: 1,
   height: 300,
   width:300,
-  thickness: 0.3,
+  thickness: 40,
   value: 10,
   angleOffset: 10,
   angleArc: 340,

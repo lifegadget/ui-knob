@@ -46,7 +46,6 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   _leftRight(e, code) {
     const {leftRight} = this.getProperties('leftRight');
     const inversion = code.substr(-5) === 'right' ? 1 : -1;
-    console.log('inversion: ', inversion);
     if(leftRight) {
       e.preventDefault();
       const newValue = Number(this.get('value')) + ( inversion * Number(leftRight) );
