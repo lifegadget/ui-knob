@@ -16,14 +16,10 @@ knob .selected {
   cursor: pointer;
 }
 
-knob.focused .selected {
-  stroke: #d5d5d5;
-}
-
 knob .selected-padding {
-  stroke: #aaff94;
-  fill: #aaff94;
-  opacity: 0.65;
+  stroke: #9ee88b;
+  fill: #9ee88b;
+  opacity: 0.45;
 }
 
 knob .unselected {

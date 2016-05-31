@@ -13,14 +13,20 @@
         value=value
         min=min
         max=max
+
         step=step
+        leftRight=leftRight
+        upDown=upDown
+
         width=width
         height=height
+
         thickness=thickness
         angleOffset=angleOffset
         angleArc=angleArc
+        selectedPadding=selectedPadding
+
         displayInput=displayInput
-        lineCap=lineCap
         readOnly=readOnly
         selectedColor=selectedColor
         unselectedColor=unselectedColor
@@ -93,16 +99,6 @@
           </span>
         </control>
         <control>
-          <span class='name'>step:</span>
-          <span>
-            {{text-input
-              value=step
-              skin='flat'
-              size='small'
-              onBlur=(mut step)
-            }}
-          </span>
-
           <span class='name'>angleOffset:</span>
           <span>
             {{text-input
@@ -119,6 +115,46 @@
               skin='flat'
               size='small'
               onBlur=(mut angleArc)
+            }}
+          </span>
+          <span class='name'>selectedPadding:</span>
+          <span>
+            {{text-input
+              value=selectedPadding
+              skin='flat'
+              size='small'
+              onBlur=(mut selectedPadding)
+            }}
+          </span>
+
+        </control>
+        <control>
+          <span class='name'>step:</span>
+          <span>
+            {{text-input
+              value=step
+              skin='flat'
+              size='small'
+              onBlur=(mut step)
+            }}
+          </span>
+
+          <span class='name'>leftRight:</span>
+          <span>
+            {{text-input
+              value=leftRight
+              skin='flat'
+              size='small'
+              onBlur=(mut leftRight)
+            }}
+          </span>
+          <span class='name'>upDown:</span>
+          <span>
+            {{text-input
+              value=upDown
+              skin='flat'
+              size='small'
+              onBlur=(mut upDown)
             }}
           </span>
         </control>
@@ -230,6 +266,24 @@
       The <i>thickness</i> determines the width between the inner and outer radius of the arc shape. You can specify it in either fixed pixel units or as a percentage of the width (which is useful for some responsive scenarios). In all cases you should not specify a unit of measure (e.g., px or %) but instead any value less 1 will be treated as a percentage.
     </div>
   </div>
+
+  <h4>Selection Padding</h4>
+  <div class="row">
+    <div class="explanation col-xs-12">
+      <p>
+        By default the only highlighted part of the arc represents the value's perportion of the arc. This is all that's needed in most cases but where there are a large number of possible states the selector can be fairly small so adding padding becomes a way of helping the user quickly get a visual snapshot.
+      </p>
+      <p>
+        Adding padding is done via the <code>selectedPadding</code> parameter and can be stated in three distinct ways:
+      </p>
+      <ul>
+        <li>Degrees of padding</li>
+        <li>Multiples of the selection</li>
+        <li>Linear Path</li>
+      </ul>
+    </div>
+  </div>
+
 
   <h4>Focus</h4>
   <div class="row">

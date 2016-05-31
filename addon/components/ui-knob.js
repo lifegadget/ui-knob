@@ -49,14 +49,20 @@ export default Ember.Component.extend(Stylist, DDAU, {
    * By default leftRight is equal to "step" which is often appropriate
    * but users may override this to any explicit value they want
    */
-  leftRight: computed('step', function() {
-    return this.get('step') || 1;
+  leftRight: null,
+  _leftRight: computed('leftRight', 'step', function() {
+    return this.get('leftRight') ? this.get('leftRight') : this.get('step') || 1;
   }),
   /**
    * By default the upDown incrementors will move by 10% of the total range of the max-min
    * range but users may override this to any explicit value they want
    */
-  upDown: computed('min','max', function() {
+  upDown: null,
+  _upDown: computed('upDown', 'min', 'max', function() {
+    if(this.get('upDown')) {
+      return this.get('upDown');
+    }
+
     return (this.get('max') - this.get('min')) / 10;
   }),
 

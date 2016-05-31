@@ -13,11 +13,19 @@
       class='background'
       style={{_knobBackgroundStyle}}
     ></path>
+
     <path
       d={{arc}}
       class='unselected'
       style={{_knobUnselectedStyle}}
     ></path>
+
+    {{#if selectedPadding}}
+      <path
+        d={{selectedPaddingArc}}
+        class='selected-padding'
+      ></path>
+    {{/if}}
     <path
       class='selected'
       d={{selectedArc}}

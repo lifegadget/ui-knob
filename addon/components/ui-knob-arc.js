@@ -223,14 +223,57 @@ const uiArc = Ember.Component.extend(DDAU, {
   selectedArc: computed('value', '_startAngle', '_tickWidth', function() {
     const {width, value, _startAngle, _tickWidth, thickness} = this.getProperties('width', 'value', '_startAngle', '_tickWidth', 'thickness');
     const tickIndex = this.getTick(value);
-
-    console.log(_startAngle, tickIndex, _tickWidth);
     const selected = arc()
       .innerRadius( (width / 2) - thickness )
       .outerRadius( width / 2 )
       .cornerRadius( 2 )
       .startAngle( _startAngle + tickIndex * _tickWidth )
       .endAngle( _startAngle + (tickIndex + 1) * _tickWidth );
+
+    return selected();
+  }),
+
+  selectedPaddingArc: computed('value', '_startAngle', '_tickWidth', 'selectedPadding', function() {
+    const {width, value, _startAngle, _endAngle, _tickWidth, thickness, selectedPadding} = this.getProperties('width', 'value', '_startAngle', '_endAngle', '_tickWidth', 'thickness', 'selectedPadding');
+    const tickIndex = this.getTick(value);
+    let padding;
+    let start;
+    let end;
+    if (!selectedPadding) {
+      return false;
+    }
+    else if (selectedPadding.substr(-3) === 'deg') {
+      padding = toRadians(selectedPadding.substr(0, selectedPadding.length - 3));
+      console.log('padding for degrees', padding);
+      start = _startAngle + (tickIndex * _tickWidth) - padding;
+      end = _startAngle + ((tickIndex + 1) * _tickWidth) + padding;
+    }
+    else if (selectedPadding === 'upTo') {
+      console.log('upTo:', start, end);
+      start = _startAngle;
+      end = _startAngle + (tickIndex * _tickWidth);
+    }
+    else if(!Number.isNaN(selectedPadding)) {
+      padding = Number(selectedPadding) * _tickWidth;
+      start = _startAngle + (tickIndex * _tickWidth) - padding;
+      end = _startAngle + ((tickIndex + 1) * _tickWidth) + padding;
+    } else {
+      this.ddau('onError', {
+        code: 'unknown-selected-padding-value',
+        value: selectedPadding
+      });
+      return false;
+    }
+
+    start = start < _startAngle ? _startAngle : start;
+    end = end > _endAngle ? _endAngle : end;
+
+    const selected = arc()
+      .innerRadius( (width / 2) - thickness )
+      .outerRadius( width / 2 )
+      .cornerRadius( 2 )
+      .startAngle( start )
+      .endAngle( end );
 
     return selected();
   }),
