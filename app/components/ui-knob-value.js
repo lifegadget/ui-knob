@@ -1,1 +1,0 @@
-export { default } from 'ui-knob/components/ui-knob-value';

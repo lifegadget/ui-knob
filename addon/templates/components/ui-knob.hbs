@@ -2,19 +2,15 @@
   id="{{elementId}}"
   class='{{if class (concat class ' ')}}ui-knob{{if isFocused ' focused'}}'
   style={{stylist}}
-  tabindex=0
+  tabindex={{tabindex}}
   onfocus={{action 'onFocus' true}}
   onblur={{action 'onFocus' false}}
 >
   {{yield}}
   {{#if displayInput}}
-    {{ui-knob-input
+    {{ui-knob-faceplate
       value=value
       blurValue=_blurValue
-      step=step
-      width=width
-      height=height
-      thickness=thickness
       readyOnly=readOnly
       upper=upper
       lower=lower
@@ -22,6 +18,7 @@
       post=post
     }}
   {{/if}}
+
   {{#ui-knob-keyboard
     value=value
     isFocused=isFocused
@@ -30,23 +27,23 @@
     onChange=(action 'onChange')
     as |kb|
   }}
-      {{ui-knob-arc
-        width=width
-        height=height
-        value=value
+    {{ui-knob-arc
+      width=width
+      height=height
+      value=value
 
-        selectedPadding=selectedPadding
-        thickness=thickness
+      selectedPadding=selectedPadding
+      thickness=thickness
 
-        min=min
-        max=max
-        angleArc=angleArc
-        angleOffset=angleOffset
+      min=min
+      max=max
+      angleArc=angleArc
+      angleOffset=angleOffset
 
-        isFocused=isFocused
-        selectedColor=selectedColor
-        unselectedColor=unselectedColor
-      }}
+      isFocused=isFocused
+      selectedColor=selectedColor
+      unselectedColor=unselectedColor
+    }}
 
   {{/ui-knob-keyboard}}
 </knob>

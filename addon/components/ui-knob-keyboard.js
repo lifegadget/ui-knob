@@ -31,6 +31,7 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   }),
 
   swipeLeft(e) {
+    e.preventDefault();
     this._leftRight(e, 'swipe-left');
   },
   swipeRight(e) {
@@ -59,7 +60,7 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
 
   _upDown(e, code) {
     const {upDown, isFocused} = this.getProperties('upDown', 'isFocused');
-    const inversion = code.substr(-4) === 'down' ? 1 : -1;
+    const inversion = code.substr(-4) === 'down' ? -1 : 1;
     if(upDown && isFocused) {
       e.preventDefault();
       const newValue = Number(this.get('value')) + ( inversion * Number(upDown) );

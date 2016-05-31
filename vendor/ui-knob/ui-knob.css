@@ -1,5 +1,6 @@
 knob {
   display: flex;
+  position: relative;
   flex: 1 0;
   outline: none;
 }
@@ -13,6 +14,10 @@ knob .selected {
   stroke: #9ee88b;
   fill: #9ee88b;
   cursor: pointer;
+}
+
+knob.focused .selected {
+  stroke: #d5d5d5;
 }
 
 knob .selected-padding {
@@ -30,4 +35,38 @@ knob .unselected {
 knob.focused .unselected {
   stroke: #d5d5d5;
   fill: #EFEEEE;
+}
+
+knob faceplate {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+  cursor: default;
+  color: #323232;
+}
+knob.focused faceplate {
+  color: black;
+}
+
+faceplate row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+faceplate row > div,
+faceplate row > span {
+  display: flex;
+  padding: 0 0.35rem;
+  margin: 0;
+}
+
+faceplate span.value {
+  cursor: pointer;
+  font-size: 2.2em;
 }

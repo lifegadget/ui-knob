@@ -9,7 +9,7 @@ import DDAU from '../mixins/ddau';
 export default Ember.Component.extend(Stylist, DDAU, {
   layout,
   tagName: '',
-  styleBindings: ['outline', 'fontSize', 'fontWeight', 'fontFamily'],
+  styleBindings: ['fontSize', 'fontWeight', 'fontFamily', 'width'],
 
   type: 'text',
   value: 0,
@@ -24,7 +24,6 @@ export default Ember.Component.extend(Stylist, DDAU, {
   readOnly: false,
   rotation: 'clockwise',
   // UI related props
-  cursor: false, // set to a number to have a partial line show instead of a "total line"
   thickness: 0.3,
   lineCap: 'butt', // can also be "round"
   width: 100,
@@ -44,6 +43,7 @@ export default Ember.Component.extend(Stylist, DDAU, {
   selectedColor: '#66CC66',
   unselectedColor: '#EFEEEE',
   inputColor: 'black',
+  tabindex: 0,
 
   /**
    * By default leftRight is equal to "step" which is often appropriate
@@ -62,11 +62,16 @@ export default Ember.Component.extend(Stylist, DDAU, {
 
   font: 'Arial',
   fontWeight: 'normal',
-  outline: 'none',
+  fontSize: computed('width', function() {
+    const {width} = this.getProperties('width');
+    return `${width / 10}px`;
+  }),
 
   actions: {
     onFocus(isFocused) {
+      const code = isFocused ? 'gained-focus' : 'lost-focus';
       this.set('isFocused', isFocused);
+      this.ddau('onFocus', {code, knob: this}, isFocused);
     },
     onChange(hash) {
       const {min, max} = this.getProperties('min', 'max');

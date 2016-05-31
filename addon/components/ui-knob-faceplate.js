@@ -1,9 +1,13 @@
 import Ember from 'ember';
-import layout from '../templates/components/ui-knob-value';
+import layout from '../templates/components/ui-knob-faceplate';
+const { keys, create } = Object; // jshint ignore:line
+const { RSVP: {Promise, all, race, resolve, defer} } = Ember; // jshint ignore:line
+const { inject: {service} } = Ember; // jshint ignore:line
+const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
 const { get, set, debug } = Ember; // jshint ignore:line
 const a = Ember.A; // jshint ignore:line
 
-const viewValue = Ember.Component.extend({
+const faceplate = Ember.Component.extend({
   layout,
   tagName:'',
 
@@ -38,8 +42,8 @@ const viewValue = Ember.Component.extend({
     return _thickness;
   }),
 });
-viewValue.reopenClass({
+faceplate.reopenClass({
   positionalParams: ['value']
 });
-viewValue[Ember.NAME_KEY] = 'ui-knob-input';
-export default viewValue;
+faceplate[Ember.NAME_KEY] = 'ui-knob-faceplate';
+export default faceplate;
