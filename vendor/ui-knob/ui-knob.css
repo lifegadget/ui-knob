@@ -19,7 +19,7 @@ knob .selected {
 knob .selected-padding {
   stroke: #9ee88b;
   fill: #9ee88b;
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
 knob .unselected {

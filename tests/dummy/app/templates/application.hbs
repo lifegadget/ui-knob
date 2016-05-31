@@ -183,17 +183,6 @@
           </span>
         </control>
         <control>
-          <span class='name'>selectedPadding</span>
-          <span>
-            {{ui-buttons
-              buttons='off:::false,5%,10%,25'
-              cardinality='1:1'
-              value=cursor
-              onChange=(mut cursor)
-            }}
-          </span>
-        </control>
-        <control>
           <span class='name'>selectedColor:</span>
           <span>
             {{text-input value=selectedColor skin='flat' size='small' defaultValue='#66CC66' onBlur=(mut selectedColor)}}
@@ -260,6 +249,7 @@
     </div>
   </div>
 
+  <br>
   <h4>Thickness</h4>
   <div class="row">
     <div class="explanation col-xs-12">
@@ -267,6 +257,7 @@
     </div>
   </div>
 
+  <br>
   <h4>Selection Padding</h4>
   <div class="row">
     <div class="explanation col-xs-12">
@@ -277,9 +268,18 @@
         Adding padding is done via the <code>selectedPadding</code> parameter and can be stated in three distinct ways:
       </p>
       <ul>
-        <li>Degrees of padding</li>
-        <li>Multiples of the selection</li>
-        <li>Linear Path</li>
+        <li>
+          <b>Degrees</b>
+          - you can specify the number of radial degrees that you'd like padded on both sides of the selected value. You do this by postfixing the number with <b>deg</b> so for a padding of 10 degrees on both sides you would set to "10deg"
+        </li>
+        <li>
+          <b>Multiples</b>
+          - by just setting as number you are stating a multiple of the current selection as a buffer on either side. So if a knob with 30 selections has a radian width of 0.19142320828324905 then setting the value of <code>selectedPadding</code> to 2 would give you <i>0.19142320828324905 x 2</i> radians on each side as padding.
+        </li>
+        <li>
+          <b>Path</b>
+          - if you set the padding to be the string value "upTo" then you'll get a one-sided pad where everything from the startAngle to the current value is padding.
+        </li>
       </ul>
     </div>
   </div>
