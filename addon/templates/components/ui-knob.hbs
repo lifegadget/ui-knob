@@ -7,6 +7,21 @@
   onblur={{action 'onFocus' false}}
 >
   {{yield}}
+  {{#if displayInput}}
+    {{ui-knob-input
+      value=value
+      blurValue=_blurValue
+      step=step
+      width=width
+      height=height
+      thickness=thickness
+      readyOnly=readOnly
+      upper=upper
+      lower=lower
+      pre=pre
+      post=post
+    }}
+  {{/if}}
   {{#ui-knob-keyboard
     value=value
     isFocused=isFocused
