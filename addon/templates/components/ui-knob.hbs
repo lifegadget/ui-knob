@@ -1,12 +1,11 @@
 <knob
   id="{{elementId}}"
-  class='{{if class (concat class ' ')}}ui-knob{{if isFocused ' focused'}}'
+  class='{{if class (concat class ' ')}}ui-knob{{if isFocused ' focused'}}{{if readOnly ' read-only'}}'
   style={{stylist}}
   tabindex={{tabindex}}
   onfocus={{action 'onFocus' true}}
   onblur={{action 'onFocus' false}}
 >
-  {{yield}}
   {{#if displayInput}}
     {{ui-knob-faceplate
       value=value

@@ -158,19 +158,10 @@ const uiArc = Ember.Component.extend({
     return selected();
   }),
 
-  startedDrag(e) {
-    console.log('started drag', e);
-  },
-
   transformSize: Ember.computed('width', function() {
     return this.get('width') / 2;
   }),
 
-  actions: {
-    startSelectionDrag(e) {
-      console.log('starting drag', e);
-    }
-  }
 });
 
 

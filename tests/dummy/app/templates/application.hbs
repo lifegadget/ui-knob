@@ -35,7 +35,7 @@
         onError=(action 'onError')
       }}
     </div>
-    <div class="col-xs-12 col-md-4">
+    <div class="col-xs-12 col-md-3">
       <code class='handlebars'>
         {{display-component
           componentName='ui-knob'
@@ -134,32 +134,11 @@
               onToggle=(mut displayInput)
             }}
           </span>
-          <span class='name'>display previous:</span>
-          <span>
-            {{ui-toggle-button
-              size='small'
-              outline=true
-              on='show'
-              false='hide'
-              value=displayPrevious
-              onToggle=(mut displayPrevious)
-            }}
-          </span>
-        </control>
-        <control>
-          <span class='name'>line cap:</span>
-          <span>
-            {{ui-buttons
-              buttons='butt,round'
-              cardinality='1:1'
-              value=lineCap
-              onChange=(mut lineCap)
-            }}
-          </span>
           <span class='name'>read only:</span>
           <span>
             {{ui-toggle-button
               on='true'
+              outline=true
               false='false'
               value=readOnly
               onToggle=(mut readOnly)
@@ -236,14 +215,29 @@
   </div> {{! End ROW }}
 
   <h3>Topics</h3>
+
+  <h4>Angle (offset and arc)</h4>
+  <div class="row">
+    <div class="explanation col-xs-12">
+      There are two angle properties: <code>angleOffset</code> and <code>angleArc</code>. The "offset" is the number of degrees from 0 degrees (aka, 12 O'Clock) that you want the arc to start. The "arc" is how many degrees the arc should traverse for. As a "for instance", if you wanted a complete circle then you'd set <i>offset</i> to 0 and <i>arc</i> to 360.
+    </div>
+  </div>
+
+  <h4>Thickness</h4>
+  <div class="row">
+    <div class="explanation col-xs-12">
+      The <i>thickness</i> determines the width between the inner and outer radius of the arc shape. You can specify it in either fixed pixel units or as a percentage of the width (which is useful for some responsive scenarios). In all cases you should not specify a unit of measure (e.g., px or %) but instead any value less 1 will be treated as a percentage.
+    </div>
+  </div>
+
   <h4>Focus</h4>
   <div class="row">
     <div class="explanation col-xs-9">
       <p>
-        This component serves as an input and therefore is "focusable" like any other HTML input control. The browser's default styling for this though is an ugly blue box which may work for a rectangular input but not a circular one. Therefore the knob's <code>outline</code> CSS property has been set to "none" and in its place we programatically ensure that the {{ui-label '.focused'}} class is added to the knob when it is focused.
+        This component serves as an input and therefore is "focusable" like any other HTML input control (unless set to read-only). The browser's default styling for this though is an ugly blue box which may work for a rectangular input but not a circular one. Therefore the knob's <code>outline</code> CSS property has been set to "none" and in its place we programatically ensure that the {{ui-label 'knob.focused'}} CSS class is added to the knob when it is focused.
       </p>
       <p>
-        Furthermore, to make sure there is a visual indication "out of the box" we have set the "unselected" region of the knob to have an opacity of 0.8 which moves to 1.0 when in focus.
+        Furthermore, if you want you can also attach to the <code>onFocus()</code> event which is fired on both focus gained and lost. The interactive example above illustrates responding to these events as well as adjusting visual properties based on the CSS changes.
       </p>
     </div>
     <div class="demo col-xs-3">
@@ -291,5 +285,10 @@
 
     </div>
   </div>
+
+
 </div>
 {{/demo-css}}
+<p>
+  <br>
+</p>

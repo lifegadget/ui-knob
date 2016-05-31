@@ -69,6 +69,10 @@ export default Ember.Component.extend(Stylist, DDAU, {
 
   actions: {
     onFocus(isFocused) {
+      if(this.get('readOnly')) {
+        this.set('isFocused', false);
+        return false;
+      }
       const code = isFocused ? 'gained-focus' : 'lost-focus';
       this.set('isFocused', isFocused);
       this.ddau('onFocus', {code, knob: this}, isFocused);

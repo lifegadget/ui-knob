@@ -27,13 +27,13 @@ export default Ember.Controller.extend({
     },
     onError(hash) {
       const flashMessages = Ember.get(this, 'flashMessages');
-      flashMessages.danger(htmlSafe(`The <b>${hash.code}</b> code was sent via the <i>onError</i> action handler. Check the developer console for full details.`), {sticky: true});
+      flashMessages.danger(htmlSafe(`The <b>${hash.code}</b> code was sent via the <i>onError</i> action handler. Check the developer console for full details. Click here to remove this error message.`), {sticky: true});
       console.warn('onError action was fired', hash);
     },
     onFocus(hash) {
       const flashMessages = Ember.get(this, 'flashMessages');
-      flashMessages.info(htmlSafe(`The <b>${hash.code}</b> code was sent on the <i>onFocus</i> action handler. Check the developer console for full details.`));
-      console.info('onError action was fired', hash);
+      flashMessages.info(htmlSafe(`The <b>${hash.code}</b> code was received on the <i>onFocus</i> action handler.`));
+      console.info('onFocus action was fired', hash);
     }
   }
 });
