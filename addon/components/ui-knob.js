@@ -77,6 +77,9 @@ export default Ember.Component.extend(Stylist, DDAU, {
       this.set('isFocused', isFocused);
       this.ddau('onFocus', {code, knob: this}, isFocused);
     },
+    onError(hash) {
+      this.ddau('onError', hash, hash);
+    },
     onChange(hash) {
       const {min, max} = this.getProperties('min', 'max');
       if(hash.value < min) {

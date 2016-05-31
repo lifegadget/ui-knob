@@ -138,6 +138,7 @@
           <span>
             {{ui-toggle-button
               on='true'
+              size='small'
               outline=true
               false='false'
               value=readOnly
@@ -184,7 +185,7 @@
               step=10
               skin='flat'
               size='small'
-              onBlur=(mut lower)
+              onChange=(mut lower)
             }}
           </span>
         </control>
@@ -206,7 +207,7 @@
               step=10
               skin='flat'
               size='small'
-              onBlur=(mut post)
+              onChange=(mut post)
             }}
           </span>
         </control>
@@ -248,41 +249,54 @@
   </div>
   <h4>Colors</h4>
   <div class="row">
-    <div class="explanation col-xs-9">
+    <div class="explanation col-xs-12">
       <p>
-        The preferred and default method of setting colors on this component is setting the CSS property values. So let's look at the various functional targets and their their CSS selectors are:
+        The preferred and default method of setting colors on this component is setting the CSS property values. Here are a list of functional targets with their CSS selectors:
       </p>
       <table class='table'>
         <tr>
           <td>{{ui-label 'knob .unselected'}}</td>
           <td>
-            this represents the arc which is defined by the <code>angleArc</code> and <code>angleOffset</code> properties.
+            {{ui-pill 'svg' mood='success'}} this represents the arc which is defined by the <code>angleArc</code> and <code>angleOffset</code> properties.
           </td>
         </tr>
         <tr>
           <td>{{ui-label 'knob .selected'}}</td>
-          <td>this is the section which represents the range (in degrees of the arc) which represent the currently set value</td>
+          <td>
+            {{ui-pill 'svg' mood='success'}} this is the section which represents the range (in degrees of the arc) which represent the currently set value
+          </td>
         </tr>
         <tr>
           <td>{{ui-label 'knob .selected-padding'}}</td>
           <td>
-            If padding is turned on (by setting the <code>displayPadding</code> property) then both sides of the selected value will be highlighted.
+            {{ui-pill 'svg' mood='success'}} If padding is turned on (by setting the <code>displayPadding</code> property) then both sides of the selected value will be highlighted.
           </td>
         </tr>
         <tr>
           <td>{{ui-label 'knob .background-color'}}</td>
           <td>
-            Determines the <i>circular</i> background color. By default this is white and would not be visible on many websites. Also, if you change the <code>outline</code> property on the knob you're able to extend the diameter of the background of the knob beyond the
+            {{ui-pill 'svg' mood='success'}} Determines the <i>circular</i> background color. By default this is white and would not be visible on many websites. Also, if you change the <code>outline</code> property on the knob you're able to extend the diameter of the background of the knob beyond the
           </td>
         </tr>
+        <tr>
+          <td>
+            {{ui-label 'knob faceplate'}} <br>
+            {{ui-label 'knob faceplate .upper'}} <br>
+            {{ui-label 'knob faceplate .middle'}} <br>
+            {{ui-label 'knob faceplate .lower'}} <br>
+          </td>
+          <td>
+            {{ui-pill 'dom' mood='info'}} Determines the <i>circular</i> background color. By default this is white and would not be visible on many websites. Also, if you change the <code>outline</code> property on the knob you're able to extend the diameter of the background of the knob beyond the
+          </td>
+        </tr>
+
       </table>
       <p>
-        Please note that all of the default selectors set both the <code>stroke</code> and <code>fill</code> properties of SVG.
+        Please note that all SVG selectors respond to a somewhat different set of properties than normal DOM elements, the main focus here is that you should set both the <code>stroke</code> and <code>fill</code> properties of SVG paths.
       </p>
-
-    </div>
-    <div class="demo col-xs-3">
-
+      <p>
+        In cases where using CSS classes are too static, you can also programatically set the colors using parameters: <code>unselectedColor</code>, <code>selectedColor</code>, and <code>backgroundColor</code>. In each case you can pass in either a color value or a function. The function will be passed the knob class as a parameter so it may serve as context.
+      </p>
     </div>
   </div>
 
