@@ -1,6 +1,6 @@
 <knob
   id="{{elementId}}"
-  class='{{if class (concat class ' ')}}ui-knob{{if isFocused ' focused'}}{{if readOnly ' read-only'}}'
+  class='{{if class (concat class ' ')}}ui-knob{{if isFocused ' focused'}}{{if readOnly ' read-only'}}{{if fit ' fit' ' fill'}}'
   style={{stylist}}
   tabindex={{tabindex}}
   onfocus={{action 'onFocus' true}}
@@ -15,6 +15,9 @@
       lower=lower
       pre=pre
       post=post
+
+      justify=justifyFaceplate
+      align=alignFaceplate
     }}
   {{/if}}
 
@@ -28,8 +31,11 @@
   }}
     {{ui-knob-arc
       width=width
+      knobWidth=_width
       height=height
       value=value
+      verticalAdjustment=_verticalAdjustment
+      horizontalAdjustment=_horizontalAdjustment
 
       selectedPadding=selectedPadding
       thickness=thickness
@@ -44,6 +50,7 @@
       selectedColor=selectedColor
       unselectedColor=unselectedColor
       backgroundColor=backgroundColor
+      cicularBackground=cicularBackground
 
       onError=(action 'onError')
     }}

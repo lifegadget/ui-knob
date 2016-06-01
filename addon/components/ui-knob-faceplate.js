@@ -41,6 +41,17 @@ const faceplate = Ember.Component.extend({
     const {_thickness} = this.getProperties('_thickness');
     return _thickness;
   }),
+
+  justify: null,
+  _justify: computed('justify', function() {
+    const {justify} = this.getProperties('justify');
+    return justify ? ` justify-${justify}` : '';
+  }),
+  align: null,
+  _align: computed('align', function() {
+    const {align} = this.getProperties('align');
+    return align ? ` align-${align}` : '';
+  }),
 });
 faceplate.reopenClass({
   positionalParams: ['value']

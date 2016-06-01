@@ -1,0 +1,1 @@
+export { default } from 'ui-knob/components/upper-knob';

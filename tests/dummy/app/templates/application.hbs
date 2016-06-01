@@ -193,6 +193,8 @@
           <span>
             {{text-input value=unselectedColor skin='flat' size='small' defaultValue='#EFEEEE' onBlur=(mut unselectedColor)}}
           </span>
+        </control>
+        <control>
           <span class='name'>backgroundColor:</span>
           <span>
             {{text-input value=backgroundColor skin='flat' size='small' defaultValue='#EFEEEE' onBlur=(mut backgroundColor)}}
@@ -259,7 +261,12 @@
   <h4>Thickness</h4>
   <div class="row">
     <div class="explanation col-xs-12">
-      The <i>thickness</i> determines the width between the inner and outer radius of the arc shape. You can specify it in either fixed pixel units or as a percentage of the width (which is useful for some responsive scenarios). In all cases you should not specify a unit of measure (e.g., px or %) but instead any value less 1 will be treated as a percentage.
+      <p>
+        The <i>thickness</i> determines the width between the inner and outer radius of the arc shape. You can specify it in either fixed pixel units or as a percentage of the width (which is useful for some responsive scenarios). In all cases you should not specify a unit of measure (e.g., px or %) but instead any value less 1 will be treated as a percentage.
+      </p>
+      <p>
+        This parameter is optional and if omitted it will default to 1/15th of the width of the component. This produces a relatively sleek yet "touchable" tracking band which provides plenty of real-estate for displaying the value (aka, the "faceplate").
+      </p>
     </div>
   </div>
 
@@ -302,9 +309,9 @@
       </p>
     </div>
     <div class="demo col-xs-3">
-      {{ui-knob width=50 height=50 value=2 min=1 max=10}}
-      {{ui-knob width=50 height=50 value=5 min=1 max=10}}
-      {{ui-knob width=50 height=50 value=10 min=1 max=10}}
+      {{ui-knob width=50 height=50 value=2 min=1 max=10 fit=true}}
+      {{ui-knob width=50 height=50 value=5 min=1 max=10 fit=true}}
+      {{ui-knob width=50 height=50 value=10 min=1 max=10 fit=true}}
     </div>
   </div>
   <h4>Colors</h4>
@@ -355,6 +362,36 @@
       </p>
       <p>
         In cases where using CSS classes are too static, you can also programatically set the colors using parameters: <code>unselectedColor</code>, <code>selectedColor</code>, and <code>backgroundColor</code>. In each case you can pass in either a color value or a function. The function will be passed the knob class as a parameter so it may serve as context.
+      </p>
+    </div>
+  </div>
+
+  <h3>Additional Components</h3>
+  <p>
+    Leveraging the {{ui-pill 'ui-knob'}} component through configuration, block-style decomposition, or aggregating multiple knobs into a new component -- all things you can do on your own -- but both to serve as an example of this and to provide "out-of-the-box" functionality for some common needs, we have added a few more components here:
+  </p>
+  <div class="row">
+    <div class="col-xs-12 col-lg-3">
+      {{upper-knob width=200 value=uknob onChange=(mut uknob)}}
+      {{lower-knob width=200 value=uknob onChange=(mut uknob)}}
+    </div>
+    <div class="col-xs-12 col-lg-9">
+      <h5> {{ui-label 'upper-knob'}} | {{ui-label 'lower-knob'}}</h5>
+      <p>
+        This is a very simple extension of ui-knob which simply provides a default set of values for the knob which give the desired effect. It is achieved by extending the base {{ui-label 'ui-knob'}} component like so:
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-lg-3">
+      <span>{{left-knob width=200 value=uknob onChange=(mut uknob) fit=true}}</span>
+      <span>{{right-knob width=200 value=uknob onChange=(mut uknob) fit=true}}</span>
+    </div>
+    <div class="col-xs-12 col-lg-9">
+      <h5> {{ui-label 'left-knob'}} | {{ui-label 'right-knob'}}</h5>
+      <p>
+        Bet you can't guess how we did this. :)
       </p>
     </div>
   </div>

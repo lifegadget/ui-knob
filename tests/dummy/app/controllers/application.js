@@ -18,6 +18,10 @@ export default Ember.Controller.extend({
   lineCap: 'butt',
   lower:'',
   upper:'',
+
+  uknob: 3,
+  lknob: 4,
+
   actions: {
     onChange(hash) {
       this.set('value', hash.value);

@@ -89,7 +89,7 @@ const uiArc = Ember.Component.extend(DDAU, {
    * given a value, determine where in the ticks index it resides
    */
   getTick(value) {
-    const {_ticks} = this.getProperties('_ticks');
+    const {_ticks, clockwise} = this.getProperties('_ticks', 'clockwise');
     let index = null;
     for(let i=0; i <= _ticks.length; i++) {
       if (_ticks[i] === Number(value)) {
@@ -98,7 +98,7 @@ const uiArc = Ember.Component.extend(DDAU, {
       }
     }
     if(index !== null) {
-      return index;
+      return clockwise ? index : _ticks.length - index;
     } else {
       this.ddau('onError', {
         code: 'invalid-value-on-tick-check',
@@ -184,7 +184,6 @@ const uiArc = Ember.Component.extend(DDAU, {
     }
   },
 
-  value: null,
   /**
    * Responsible for mapping input domain to a degree-based range.
    * This also means including negative degrees when the range crosses
@@ -200,6 +199,7 @@ const uiArc = Ember.Component.extend(DDAU, {
   /**
    * Takes inputted value and maps to appropriate radian domain value using scalar
    */
+   value: null,
   _value: computed('value','scalar', function() {
     const {scalar, value} = this.getProperties('scalar', 'value');
     return scalar(value);
@@ -216,12 +216,12 @@ const uiArc = Ember.Component.extend(DDAU, {
       return knob();
   }),
 
-  inputHitZone: computed('width', function() {
-    const {width} = this.getProperties('width');
-    this.set('_hitZoneTransform', width / 25);
+  inputHitZone: computed('knobWidth', function() {
+    const {knobWidth} = this.getProperties('knobWidth');
+    this.set('_hitZoneTransform', knobWidth / 25);
     const knob = arc()
       .innerRadius( 0 )
-      .outerRadius( width / 6.5 )
+      .outerRadius( knobWidth / 6.5 )
       .startAngle( toRadians(0) )
       .endAngle( toRadians(360) );
 
@@ -298,9 +298,15 @@ const uiArc = Ember.Component.extend(DDAU, {
     return selected();
   }),
 
-  transformSize: Ember.computed('width', function() {
-    return this.get('width') / 2;
+  transformWidth: Ember.computed('width','horizontalAdjustment', function() {
+    const {width,  horizontalAdjustment} = this.getProperties('width', 'horizontalAdjustment');
+    return (width / 2) + horizontalAdjustment;
   }),
+  transformHeight: Ember.computed('width','verticalAdjustment', function() {
+    const {width,  verticalAdjustment} = this.getProperties('width', 'verticalAdjustment');
+    return (width / 2) + verticalAdjustment;
+  }),
+
 
 });
 

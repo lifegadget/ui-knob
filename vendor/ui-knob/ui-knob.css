@@ -5,8 +5,8 @@ knob {
   outline: none;
 }
 
-knob svg {
-  touch-action: manipulation;
+knob.fit {
+  flex: 0 0;
 }
 
 knob .selected {
@@ -37,14 +37,16 @@ knob .selected-padding {
 }
 
 knob .unselected {
-  stroke: #f5f0f0;
+  stroke: #f6f6f6;
   fill: #f4f0f0;
+  opacity: 0.5;
   cursor: default;
 }
 
 knob.focused .unselected {
   stroke: #d5d5d5;
   fill: #EFEEEE;
+  opacity: 0.9;
 }
 
 knob faceplate {
@@ -60,6 +62,19 @@ knob faceplate {
 }
 knob.focused faceplate {
   color: black;
+}
+
+faceplate.justify-start {
+  justify-content: flex-start;
+}
+faceplate.justify-end {
+  justify-content: flex-end;
+}
+faceplate row.align-start {
+  justify-content: flex-start;
+}
+faceplate row.align-end {
+  justify-content: flex-end;
 }
 
 faceplate row {

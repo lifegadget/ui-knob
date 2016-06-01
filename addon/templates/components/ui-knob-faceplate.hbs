@@ -1,9 +1,9 @@
-<faceplate id={{elementId}} class="{{if class (concat class ' ')}}ui-knob-faceplate">
-  <row class="upper">
+<faceplate id={{elementId}} class="{{if class (concat class ' ')}}ui-knob-faceplate{{_justify}}">
+  <row class="upper{{_align}}">
     {{upper}}
   </row>
 
-  <row class="middle">
+  <row class="middle{{_align}}">
     <span class="pre">{{pre}}</span>
     <span class="value">
       {{value}}
@@ -11,7 +11,7 @@
     <span class="post">{{post}}</span>
   </row>
 
-  <row class="lower">
+  <row class="lower{{_align}}">
     {{lower}}
   </row>
 </faceplate>

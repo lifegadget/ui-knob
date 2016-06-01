@@ -9,7 +9,7 @@ import DDAU from '../mixins/ddau';
 export default Ember.Component.extend(Stylist, DDAU, {
   layout,
   tagName: '',
-  styleBindings: ['fontSize', 'fontWeight', 'fontFamily', 'width'],
+  styleBindings: ['fontSize', 'fontWeight', 'fontFamily', 'width::_width'],
 
   type: 'text',
   value: 0,
@@ -24,9 +24,15 @@ export default Ember.Component.extend(Stylist, DDAU, {
   readOnly: false,
   rotation: 'clockwise',
   // UI related props
-  thickness: 0.3,
+  thickness: computed('width', function() {
+    return this.get('width') / 10;
+  }),
   lineCap: 'butt', // can also be "round"
   width: 100,
+  _width: computed('width', '_horizontalAdjustment', function() {
+    const {width, _horizontalAdjustment} = this.getProperties('width', '_horizontalAdjustment');
+    return width + _horizontalAdjustment;
+  }),
   hasDirectInput: false, // show a text input box
   uom: null,
   skin: 'tron',
@@ -37,13 +43,18 @@ export default Ember.Component.extend(Stylist, DDAU, {
     return 'color: ' + prop.uomColor + ';' + ' width: ' + prop.width + 'px; ' +'bottom: ' + prop.uomVerticalPosition + 'px; ';
   }),
   hasUom: Ember.computed.bool('uom'),
-  height: 100,
+  height: computed('width', function() {
+    return this.get('width');
+  }),
   displayInput: true,
   displayPrevious: true,
   selectedColor: '#66CC66',
   unselectedColor: '#EFEEEE',
   inputColor: 'black',
   tabindex: 0,
+
+  justifyFaceplate: null, // vertical alignment
+  alignFaceplate: null,   // horizontal alignment
 
   /**
    * By default leftRight is equal to "step" which is often appropriate
@@ -72,7 +83,41 @@ export default Ember.Component.extend(Stylist, DDAU, {
     const {width} = this.getProperties('width');
     return `${width / 10}px`;
   }),
+  /**
+   * Determines whether the background should be a full circle; the container
+   * can be explicit by passing in a boolean but by default arcs of more than 190
+   * degrees will be circles, otherwise they'll be left with the same arc dimensions
+   * as the rest of the knob.
+   */
+  circularBackground: computed('angleArc', function() {
+    return Number(this.get('angleArc')) > 190 ? true : false;
+  }),
 
+  // ADJUSTMENTS
+  // ---------------------
+  verticalAdjustment: null,
+  _verticalAdjustment: computed('verticalAdjustment', function() {
+    let {verticalAdjustment, width} = this.getProperties('verticalAdjustment', 'width');
+
+    if(verticalAdjustment && verticalAdjustment.slice(-1) === '%') {
+      verticalAdjustment = width * (verticalAdjustment.slice(0, verticalAdjustment.length - 1) / 100);
+    }
+
+    return verticalAdjustment ? verticalAdjustment : 0;
+  }),
+  horizontalAdjustment: null,
+  _horizontalAdjustment: computed('horizontalAdjustment', function() {
+    let {horizontalAdjustment, width} = this.getProperties('horizontalAdjustment', 'width');
+
+    if(horizontalAdjustment && horizontalAdjustment.slice(-1) === '%') {
+      horizontalAdjustment = width * ( horizontalAdjustment.slice(0, horizontalAdjustment.length - 1) / 100);
+    }
+
+    return horizontalAdjustment ? horizontalAdjustment : 0;
+  }),
+
+  // ACTIONS
+  // ----------------------
   actions: {
     onFocus(isFocused) {
       if(this.get('readOnly')) {

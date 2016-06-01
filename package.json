@@ -20,7 +20,7 @@
   "devDependencies": {
     "bootstrap": "4.0.0-alpha.2",
     "broccoli-asset-rev": "^2.1.2",
-    "demo-helper": "0.2.8",
+    "demo-helper": "0.2.9",
     "ember-cli": "^2.4.2",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-autoprefixer": "^0.6.0",
