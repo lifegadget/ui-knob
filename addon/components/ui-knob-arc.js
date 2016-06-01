@@ -98,7 +98,7 @@ const uiArc = Ember.Component.extend(DDAU, {
       }
     }
     if(index !== null) {
-      return clockwise ? index : _ticks.length - index;
+      return clockwise ? index : _ticks.length - index - 1;
     } else {
       this.ddau('onError', {
         code: 'invalid-value-on-tick-check',
@@ -216,12 +216,12 @@ const uiArc = Ember.Component.extend(DDAU, {
       return knob();
   }),
 
-  inputHitZone: computed('knobWidth', function() {
-    const {knobWidth} = this.getProperties('knobWidth');
-    this.set('_hitZoneTransform', knobWidth / 25);
+  inputHitZone: computed('width', function() {
+    const {width} = this.getProperties('width');
+    this.set('_hitZoneTransform', width / 25);
     const knob = arc()
       .innerRadius( 0 )
-      .outerRadius( knobWidth / 6.5 )
+      .outerRadius( width / 6.5 )
       .startAngle( toRadians(0) )
       .endAngle( toRadians(360) );
 
@@ -240,7 +240,7 @@ const uiArc = Ember.Component.extend(DDAU, {
   }),
 
 
-  selectedArc: computed('value', '_startAngle', '_tickWidth', 'thickness', function() {
+  selectedArc: computed('value', '_startAngle', '_tickWidth', 'thickness', 'clockwise', function() {
     const {width, value, _startAngle, _tickWidth, thickness} = this.getProperties('width', 'value', '_startAngle', '_tickWidth', 'thickness');
     const tickIndex = this.getTick(value);
     const selected = arc()

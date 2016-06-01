@@ -35,7 +35,7 @@
     "ember-cli-release": "0.2.8",
     "ember-cli-sass": "5.3.0",
     "ember-cli-sri": "^2.1.0",
-    "ember-cli-stylist": "0.4.4",
+    "ember-cli-stylist": "0.4.6",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.4.0",
     "ember-disable-prototype-extensions": "^1.1.0",

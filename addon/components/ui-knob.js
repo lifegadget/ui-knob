@@ -9,7 +9,7 @@ import DDAU from '../mixins/ddau';
 export default Ember.Component.extend(Stylist, DDAU, {
   layout,
   tagName: '',
-  styleBindings: ['fontSize', 'fontWeight', 'fontFamily', 'width::_width'],
+  styleBindings: 'width,fontSize,fontWeight,fontFamily',
 
   type: 'text',
   value: 0,
@@ -22,7 +22,7 @@ export default Ember.Component.extend(Stylist, DDAU, {
   stopper: true,
   step: 1,
   readOnly: false,
-  rotation: 'clockwise',
+  clockwise: true,
   // UI related props
   thickness: computed('width', function() {
     return this.get('width') / 10;

@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
   upper:'',
 
   uknob: 3,
-  lknob: 4,
+  lrknob: 4,
 
   actions: {
     onChange(hash) {

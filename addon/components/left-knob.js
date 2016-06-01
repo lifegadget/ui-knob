@@ -7,6 +7,7 @@ export default knob.extend({
   angleArc: 180,
   clockwise: false,
   alignFaceplate: 'end', // puts faceplate to top of DIV
-  horizontalAdjustment: '-50%', // moves arcs leftward by 50% and reduce DIV width by 50%
-
+  _width: Ember.computed('width', function() {
+    return this.get('width') / 2;
+  })
 });
