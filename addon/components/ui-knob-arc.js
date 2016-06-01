@@ -15,10 +15,6 @@ const htmlSafe = Ember.String.htmlSafe;
 const toRadians = function(degrees) {
   return degrees * Math.PI / 180;
 };
-// Converts from radians to degrees.
-const toDegrees = function(radians) {
-  return radians * 180 / Math.PI;
-};
 
 const uiArc = Ember.Component.extend(DDAU, {
   layout,
@@ -157,10 +153,10 @@ const uiArc = Ember.Component.extend(DDAU, {
   _knobUnselectedStyle: computed('unselectedColor', function() {
     return this._strokeAndFill(this.get('unselectedColor'));
   }),
-  _knobBackgroundStyle: computed('unselectedColor', function() {
-    return this._strokeAndFill(this.get('backgroundColor'));
+  _knobBackgroundStyle: computed('backgroundColor', function() {
+    return this._strokeAndFill(this.get('backgroundColor'), {opacity: 1});
   }),
-  _strokeAndFill(value) {
+  _strokeAndFill(value, o = {}) {
     let props;
     if (value) {
       switch(typeOf(value)) {
@@ -180,8 +176,9 @@ const uiArc = Ember.Component.extend(DDAU, {
           debug('ui-knob-arc: unknown property value for determining stroke and fill:', value);
           props = {stroke: 'inherit', fill: 'inherit'};
       }
+      const opacity = o.opacity ? ` opacity: ${o.opacity}` : '';
 
-      return htmlSafe(`stroke: ${props.stroke}; fill: ${props.fill};`);
+      return htmlSafe(`stroke: ${props.stroke}; fill: ${props.fill};${opacity}`);
     } else {
       return '';
     }
@@ -207,7 +204,7 @@ const uiArc = Ember.Component.extend(DDAU, {
     const {scalar, value} = this.getProperties('scalar', 'value');
     return scalar(value);
   }),
-  arc: computed('_startAngle', '_endAngle', function() {
+  arc: computed('_startAngle', '_endAngle', 'thickness', function() {
     const {_startAngle, _endAngle, width, thickness} = this.getProperties('_startAngle', '_endAngle', 'width', 'thickness');
     const knob = arc()
       .innerRadius( (width / 2) - thickness )
@@ -219,8 +216,31 @@ const uiArc = Ember.Component.extend(DDAU, {
       return knob();
   }),
 
+  inputHitZone: computed('width', function() {
+    const {width} = this.getProperties('width');
+    this.set('_hitZoneTransform', width / 25);
+    const knob = arc()
+      .innerRadius( 0 )
+      .outerRadius( width / 6.5 )
+      .startAngle( toRadians(0) )
+      .endAngle( toRadians(360) );
 
-  selectedArc: computed('value', '_startAngle', '_tickWidth', function() {
+      return knob();
+  }),
+
+  backgroundArc: computed('_startAngle', '_endAngle', function() {
+    const {_startAngle, _endAngle, width, thickness} = this.getProperties('_startAngle', '_endAngle', 'width', 'thickness');
+    const knob = arc()
+      .innerRadius( 0 )
+      .outerRadius( width / 2 )
+      .startAngle( toRadians(0) )
+      .endAngle( toRadians(360) );
+
+      return knob();
+  }),
+
+
+  selectedArc: computed('value', '_startAngle', '_tickWidth', 'thickness', function() {
     const {width, value, _startAngle, _tickWidth, thickness} = this.getProperties('width', 'value', '_startAngle', '_tickWidth', 'thickness');
     const tickIndex = this.getTick(value);
     const selected = arc()
@@ -233,7 +253,7 @@ const uiArc = Ember.Component.extend(DDAU, {
     return selected();
   }),
 
-  selectedPaddingArc: computed('value', '_startAngle', '_tickWidth', 'selectedPadding', function() {
+  selectedPaddingArc: computed('value', '_startAngle', '_tickWidth', 'selectedPadding','thickness', function() {
     const {width, value, _startAngle, _endAngle, _tickWidth, thickness, selectedPadding} = this.getProperties('width', 'value', '_startAngle', '_endAngle', '_tickWidth', 'thickness', 'selectedPadding');
     const tickIndex = this.getTick(value);
     let padding;

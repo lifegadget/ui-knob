@@ -4,10 +4,14 @@ import RecognizerMixin from 'ember-gestures/mixins/recognizers';
 import { EKMixin, keyDown } from 'ember-keyboard';
 import DDAU from '../mixins/ddau';
 
+const { computed, observe, $, run, on, typeOf } = Ember;  // jshint ignore:line
+const { get, set, debug } = Ember; // jshint ignore:line
+const a = Ember.A; // jshint ignore:line
+
 export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   layout,
   tagName: 'event-listeners',
-  recognizers: 'swipe',
+  recognizers: 'swipe pan vertical-swipe',
 
   init() {
     this._super(...arguments);
@@ -30,6 +34,31 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
     this._upDown(e, 'keyboard-increment-down');
   }),
 
+  click(e) {
+    e.preventDefault();
+    console.log('clicked', e.target.className.baseVal);
+  },
+
+  panStart(e) {
+    e.preventDefault(e);
+    if (e.target.className.baseVal === 'selected') {
+      console.log('pan starting', e);
+      this.set('panning', true);
+    } else {
+      console.log('panning blocked');
+    }
+  },
+
+  panMove(e) {
+    e.preventDefault();
+    if (e.target.className.baseVal === 'selected') {
+      console.log('panning', e);
+      console.log(e.target.classList);
+    } else {
+      console.log(e.target.className.baseVal);
+    }
+  },
+
   swipeLeft(e) {
     e.preventDefault();
     this._leftRight(e, 'swipe-left');
@@ -38,9 +67,11 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
     this._leftRight(e, 'swipe-right');
   },
   swipeUp(e) {
+    e.preventDefault();
     this._upDown(e, 'swipe-up');
   },
   swipeDown(e) {
+    e.preventDefault();
     this._upDown(e, 'swipe-down');
   },
 

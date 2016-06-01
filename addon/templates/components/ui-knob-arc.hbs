@@ -10,8 +10,14 @@
   >
     <path
       d={{backgroundArc}}
-      class='background'
+      class='background-arc'
       style={{_knobBackgroundStyle}}
+    ></path>
+
+    <path
+      d={{inputHitZone}}
+      transform="translate(0,{{_hitZoneTransform}})"
+      class='input-hit-zone'
     ></path>
 
     <path
@@ -28,7 +34,7 @@
       ></path>
     {{/if}}
     <path
-      class='selected'
+      class='selected{{if panning ' is-panning'}}'
       d={{selectedArc}}
       style={{_knobSelectedStyle}}
     ></path>

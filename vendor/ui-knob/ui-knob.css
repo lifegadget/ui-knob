@@ -5,6 +5,10 @@ knob {
   outline: none;
 }
 
+knob svg {
+  touch-action: manipulation;
+}
+
 knob .selected {
   stroke: #7cb96c;
   fill: #7cb96c;
@@ -14,6 +18,16 @@ knob .selected {
   stroke: #9ee88b;
   fill: #9ee88b;
   cursor: pointer;
+}
+
+knob .input-hit-zone {
+  opacity: 0;
+  cursor: pointer;
+}
+
+knob .background-arc {
+  opacity: 0;
+  transition: fill .4s ease;
 }
 
 knob .selected-padding {
