@@ -1,0 +1,41 @@
+<updown style={{stylist}}>
+  {{#ui-knob-faceplate
+  }}
+    {{yield (hash
+        upper=upper
+        lower=lower
+
+        readyOnly=readOnly
+        upper=upper
+        lower=lower
+        pre=pre
+        post=post
+      )
+    }}
+  {{/ui-knob-faceplate}}
+  {{upper-knob
+    class='upper'
+    value=upper
+    min=min
+    max=max
+    step=step
+
+
+    displayInput=false
+    width=width
+    onChange=(action 'onChange' 'upper')
+    onError=(action 'onError' 'upper')
+  }}
+  {{lower-knob
+    class='lower'
+    value=lower
+    min=min
+    max=max
+    step=step
+
+    displayInput=false
+    width=width
+    onChange=(action 'onChange' 'lower')
+    onError=(action 'onError' 'lower')
+  }}
+</updown>

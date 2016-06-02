@@ -366,7 +366,7 @@
     </div>
   </div>
 
-  <h3>Additional Components</h3>
+  <h3>Component Composition</h3>
   <p>
     Leveraging the {{ui-pill 'ui-knob'}} component through configuration, block-style decomposition, or aggregating multiple knobs into a new component -- all things you can do on your own -- but both to serve as an example of this and to provide "out-of-the-box" functionality for some common needs, we have added a few more components here:
   </p>
@@ -378,12 +378,12 @@
     <div class="col-xs-12 col-lg-9">
       <h5> {{ui-label 'upper-knob'}} | {{ui-label 'lower-knob'}}</h5>
       <p>
-        This is a very simple extension of ui-knob which simply provides a default set of values for the knob which give the desired effect. It is achieved by extending the base {{ui-label 'ui-knob'}} component like so:
+        This is a very simple inheritance based extension of {{ui-label 'ui-knob'}} which simply provides a default set of values for the knob which give the desired effect:
       </p>
     </div>
   </div>
 
-  <div class="row">
+  {{!-- <div class="row">
     <div class="col-xs-12 col-lg-3">
       <span>{{left-knob width=200 value=lrknob onChange=(mut lrknob) fit=true}}</span>
       <span>{{right-knob width=200 value=lrknob onChange=(mut lrknob) fit=true}}</span>
@@ -394,8 +394,50 @@
         Bet you can't guess how we did this. :)
       </p>
     </div>
-  </div>
+  </div> --}}
 
+  <div class="row">
+    <div class="col-xs-12 col-lg-3">
+      <span>
+        {{#updown-knob
+          width=200
+          value=udknob
+          onChange=(mut udknob)
+
+          as |knobs|
+        }}
+          {{knobs.upper}} of {{knobs.lower}}
+        {{/updown-knob}}
+      </span>
+    </div>
+    <div class="col-xs-12 col-lg-9">
+      <h5> {{ui-label 'updown-knob'}}</h5>
+      <p>
+        This is an example of containment where a single component wraps two knobs into a single control. In this example we're also using the block form of the container wrapper to display our own values:
+      </p>
+      <div class="flex fill">
+        <div class="flex fit">
+          <pre><code class="language-handlebars">\{{#updown-knob
+  width=200
+  value=udknob
+  onChange=(mut udknob)
+
+  as |knobs|
+}}
+  \{{knobs.upper}} of \{{knobs.lower}}
+\{{/updown-knob}}</code></pre>
+        </div>
+        <div class="flex fill column">
+          <p>The current value is:</p>
+          <br>
+          {{json udknob}}
+          <br>
+          <p>You can move the two knobs around to change the values but they will always be packaged up as a hash with this structure.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 </div>
 {{/demo-css}}

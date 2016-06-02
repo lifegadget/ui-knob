@@ -49,7 +49,7 @@ knob.focused .unselected {
   opacity: 0.9;
 }
 
-knob faceplate {
+faceplate.ui-knob-faceplate {
   display: flex;
   position: absolute;
   width: 100%;
@@ -94,4 +94,11 @@ faceplate row > span {
 faceplate span.value {
   cursor: pointer;
   font-size: 2.2em;
+}
+
+updown {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 0.25em 0;
 }

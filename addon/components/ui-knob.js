@@ -29,7 +29,7 @@ export default Ember.Component.extend(Stylist, DDAU, {
   }),
   lineCap: 'butt', // can also be "round"
   width: 100,
-  _width: computed('width', '_horizontalAdjustment', function() {
+  _knobWidth: computed('width', '_horizontalAdjustment', function() {
     const {width, _horizontalAdjustment} = this.getProperties('width', '_horizontalAdjustment');
     return width + _horizontalAdjustment;
   }),
@@ -145,7 +145,8 @@ export default Ember.Component.extend(Stylist, DDAU, {
           code: 'keep-to-minimum-value',
           value: min,
           oldValue: hash.oldValue,
-          rejectedValue: hash.value
+          rejectedValue: hash.value,
+          context: this
         }, min);
       }
       else if(hash.value > max) {
@@ -160,7 +161,8 @@ export default Ember.Component.extend(Stylist, DDAU, {
           code: 'keep-to-maximum-value',
           value: max,
           oldValue: hash.oldValue,
-          rejectedValue: hash.value
+          rejectedValue: hash.value,
+          context: this
         }, max);
       }
       else {

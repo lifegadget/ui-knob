@@ -104,7 +104,8 @@ const uiArc = Ember.Component.extend(DDAU, {
         code: 'invalid-value-on-tick-check',
         value: value,
         ticks: _ticks,
-        message: `Looking for the index value of ticks and found no records which match. This indicates the value is not valid. No suggestions are available.`
+        message: `Looking for the index value of ticks and found no records which match. This indicates the value is not valid. No suggestions are available.`,
+        context: this
       }, false);
 
       return false;
