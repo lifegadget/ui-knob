@@ -89,6 +89,7 @@ faceplate row > span {
   display: flex;
   padding: 0 0.35rem;
   margin: 0;
+  align-items: baseline;
 }
 
 faceplate span.value {
@@ -96,9 +97,18 @@ faceplate span.value {
   font-size: 2.2em;
 }
 
-updown {
+updown,
+time-knob {
   display: flex;
   position: relative;
   flex-direction: column;
+  align-items: baseline;
   padding: 0.25em 0;
+}
+time-knob .ampm {
+  color: darkgrey;
+  font-size: 0.70em;
+}
+time-knob .divider {
+  color: darkgrey;
 }

@@ -1,0 +1,50 @@
+<time-knob style={{stylist}}>
+  {{#ui-knob-faceplate
+  }}
+    {{#if hasBlock}}
+      {{yield (hash
+          hours=hours
+          minutes=minutes
+          time=time
+          format=format
+
+          readyOnly=readOnly
+          pre=pre
+          post=post
+        )
+      }}
+    {{else}}
+      <span class="hours">{{moment-format _value _hoursFormat}}</span>
+      <span class="divider"> : </span>
+      <span class="minutes">{{moment-format _value _minutesFormat}}</span>
+      <span class="ampm">{{moment-format _value _ampmFormat}}</span>
+    {{/if}}
+
+  {{/ui-knob-faceplate}}
+  {{upper-knob
+    class='hours'
+    value=(moment-format _value 'H')
+    min=0
+    max=23
+    step=hoursStep
+    selectedPadding=padding
+
+    displayInput=false
+    width=width
+    onChange=(action 'onChange' 'hours')
+    onError=(action 'onError' 'hours')
+  }}
+  {{lower-knob
+    class='minutes'
+    value=(moment-format _value 'm')
+    min=0
+    max=59
+    step=minutesStep
+    selectedPadding=_minutesPadding
+
+    displayInput=false
+    width=width
+    onChange=(action 'onChange' 'minutes')
+    onError=(action 'onError' 'minutes')
+  }}
+</time-knob>

@@ -263,7 +263,7 @@ const uiArc = Ember.Component.extend(DDAU, {
     if (!selectedPadding) {
       return false;
     }
-    else if (selectedPadding.substr(-3) === 'deg') {
+    else if (String(selectedPadding).substr(-3) === 'deg') {
       padding = toRadians(selectedPadding.substr(0, selectedPadding.length - 3));
       console.log('padding for degrees', padding);
       start = _startAngle + (tickIndex * _tickWidth) - padding;

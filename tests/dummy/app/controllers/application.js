@@ -22,6 +22,7 @@ export default Ember.Controller.extend({
   uknob: 3,
   lrknob: 4,
   udknob: null,
+  time: '13:35',
 
   actions: {
     onChange(hash) {
