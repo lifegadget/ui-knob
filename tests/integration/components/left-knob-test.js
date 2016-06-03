@@ -9,16 +9,16 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{left-knob}}`);
+  this.render(hbs`{{left-knob value=5}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$().text().trim(), '5');
 
   // Template block usage:
   this.render(hbs`
-    {{#left-knob}}
-      template block text
+    {{#left-knob value=5}}
+      template block text5
     {{/left-knob}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '5');
 });

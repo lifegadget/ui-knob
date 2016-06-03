@@ -10,15 +10,5 @@ test('it renders', function(assert) {
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{ui-knob-arc}}`);
-
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#ui-knob-arc}}
-      template block text
-    {{/ui-knob-arc}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

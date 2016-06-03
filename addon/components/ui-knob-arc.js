@@ -230,7 +230,7 @@ const uiArc = Ember.Component.extend(DDAU, {
   }),
 
   backgroundArc: computed('_startAngle', '_endAngle', function() {
-    const {_startAngle, _endAngle, width, thickness} = this.getProperties('_startAngle', '_endAngle', 'width', 'thickness');
+    const {width} = this.getProperties('width');
     const knob = arc()
       .innerRadius( 0 )
       .outerRadius( width / 2 )

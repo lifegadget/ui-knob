@@ -34,13 +34,6 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
     this._upDown(e, 'keyboard-increment-down');
   }),
 
-  // click(e) {
-  //   e.preventDefault();
-  //   console.log('clicked', e.target.className.baseVal);
-  // },
-
-
-
   mouseDown(e) {
     this._dragStart(e);
   },
@@ -62,7 +55,7 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
     this._dragEnd(e);
   },
   _dragEnd(e) {
-    console.log('dragging stopped');
+    console.log('dragging stopped', e);
     this._isDragging = false;
   },
 
