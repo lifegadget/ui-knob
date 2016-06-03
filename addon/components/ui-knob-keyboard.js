@@ -11,7 +11,7 @@ const a = Ember.A; // jshint ignore:line
 export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
   layout,
   tagName: 'event-listeners',
-  recognizers: 'swipe pan vertical-swipe',
+  recognizers: 'swipe vertical-swipe',
 
   init() {
     this._super(...arguments);
@@ -34,28 +34,64 @@ export default Ember.Component.extend(EKMixin, DDAU, RecognizerMixin, {
     this._upDown(e, 'keyboard-increment-down');
   }),
 
-  click(e) {
-    e.preventDefault();
-    console.log('clicked', e.target.className.baseVal);
+  // click(e) {
+  //   e.preventDefault();
+  //   console.log('clicked', e.target.className.baseVal);
+  // },
+
+
+
+  mouseDown(e) {
+    this._dragStart(e);
+  },
+  touchStart(e) {
+    this._dragStart(e);
+  },
+  _dragStart(e) {
+    const targets = a(['selected', 'selected-padding']);
+    if (targets.contains(e.target.className.baseVal)) {
+      console.log('panning started!', e.target.className.baseVal);
+      // e.preventDefault();
+      this._isDragging = true;
+    }
+  },
+  mouseUp(e) {
+    this._dragEnd(e);
+  },
+  touchEnd(e) {
+    this._dragEnd(e);
+  },
+  _dragEnd(e) {
+    console.log('dragging stopped');
+    this._isDragging = false;
   },
 
-  panStart(e) {
-    e.preventDefault(e);
-    if (e.target.className.baseVal === 'selected') {
-      console.log('pan starting', e);
-      this.set('panning', true);
+  mouseMove(e) {
+    if(this._isDragging) {
+      this._dragMove(e);
+    }
+  },
+  touchMove(e) {
+    if(this._isDragging) {
+      this._dragMove(e);
+    }
+  },
+  _dragMove(e) {
+    if(this._isDragging) {
+      e.preventDefault();
+      console.log('panning', e.gesture);
     } else {
-      console.log('panning blocked');
+      console.log('panning being ignored: ', e.target.className.baseVal);
     }
   },
 
-  panMove(e) {
-    e.preventDefault();
-    if (e.target.className.baseVal === 'selected') {
-      console.log('panning', e);
-      console.log(e.target.classList);
+
+  panStop(e) {
+    if (this._isDragging) {
+      this.set('panning stopped', e.target.className.baseVal);
+      this._isDragging = false;
     } else {
-      console.log(e.target.className.baseVal);
+      console.log('panning ended but no one cared: ', e.target.className.baseVal);
     }
   },
 
